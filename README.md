@@ -7,11 +7,12 @@ Projectes Web Pràctica 1
  - afegir el seguent text si no canvia res a scripts de package.json per automatitzar el compile amb `npm run build`
  ```
   "scripts": {
-    "delete": "rmdir dist /s/q",
-    "checklinks": "npx check-html-links dist",
-    "minifier": "html-minifier --input-dir src --output-dir dist --file-ext html --remove-comments --collapse-whitespace",
-    "copymedia": "xcopy /i/s/r/h/y .\\src\\media\\ .\\dist\\media",
-    "rebuild": "npm run delete && npm run minifier && npm run copy-media && npm run checklinks",
-    "build": "npm run minifier && npm runcopymedia && npm run checklinks"
+    "del-dist": "del /s/q dist",
+    "check-links": "npx check-html-links dist",
+    "compile": "html-minifier --input-dir src --output-dir dist --file-ext html --remove-comments --collapse-whitespace",
+    "copy-media": "xcopy /i/s/r/h/y .\\src\\media\\ .\\dist\\media",
+    "installnpm": "npm install",
+    "build": "npm run installnpm && npm run del-dist && npm run compile && npm run copy-media && npm run check-links",
+    "start": "node app.js"
   },
  ```
