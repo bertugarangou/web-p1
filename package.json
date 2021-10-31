@@ -29,8 +29,5 @@
     "windows"
   ],
   "author": "Pau Hinojosa, Álvaro Martínez, Albert Garangou",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bertugarangou/web-p1/issues"
-  }
+  "license": "ISC"
 }
