@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "express": "4.17.1",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "8.0.1"
   },
   "devDependencies": {
     "check-html-links": "0.2.3",
