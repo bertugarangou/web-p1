@@ -4,12 +4,12 @@
   "description": "Project 01 proj. web",
   "main": "index.js",
   "dependencies": {
-    "express": "4.17.1",
-    "normalize.css": "8.0.1"
+    "express": "4.17.1"
   },
   "devDependencies": {
     "check-html-links": "0.2.3",
-    "html-minifier": "4.0.0"
+    "html-minifier": "4.0.0",
+    "normalize.css": "8.0.1"
   },
   "scripts": {
     "delete": "del /s/q dist",
@@ -17,10 +17,8 @@
     "minifier": "html-minifier --input-dir src --output-dir dist --file-ext html --remove-comments --collapse-whitespace --minify-js true --minify-css true",
     "copymedia": "xcopy /i/s/r/h/y .\\src\\media\\ .\\dist\\media",
     "build": "npm run delete && npm run minifier && npm run copymedia && npm run checklinks",
-    "start": "node app.js",
-    "run": "node build/build.js",
-    "dev:build-watch": "node build/build-watch.js",
-    "dev:livereload": "node build/livereload.js"
+
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
