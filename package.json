@@ -12,13 +12,14 @@
     "normalize.css": "8.0.1"
   },
   "scripts": {
+    "build": "npm run delete && npm run minifier && npm run copymedia && npm run checklinks",
+    "start": "node app.js",
+
     "delete": "del /s/q dist",
     "checklinks": "npx check-html-links dist",
     "minifier": "html-minifier --input-dir src --output-dir dist --file-ext html --remove-comments --collapse-whitespace --minify-js true --minify-css true",
-    "copymedia": "xcopy /i/s/r/h/y .\\src\\media\\ .\\dist\\media",
-    "build": "npm run delete && npm run minifier && npm run copymedia && npm run checklinks",
+    "copymedia": "xcopy /i/s/r/h/y .\\src\\media\\ .\\dist\\media"
 
-    "start": "node app.js"
   },
   "repository": {
     "type": "git",
