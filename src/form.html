@@ -1,14 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta name="authors" content="Àlvaro MartínezAlbert Garangou & Pau Hinojosa">
-        <title>TODO++</title>
-    </head>
-<body>
-    <form><!--Formulari per afegir tasques-->
 
-    </form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="authors" content="Àlvaro MartínezAlbert Garangou & Pau Hinojosa">
+    <title>TODO++</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/pages/form.css">
+    <META NAME="robots" CONTENT="nofollow">
+    <META name="description" content="TODO++, tasker website. Page used for adding and creating new tasks.">
+    <META name="keywords" content="TODO, task, tasker, deadlines, university, programming, html, css, js, npm">
+ 
+</head>
+
+<body>
+    <main>
+        <form>
+            <!--Formulari per afegir tasques-->
+
+            <div>
+                <img src="media/img/task_image1.png" alt="Selected cover image for the task" class="coverImageSelected">
+
+                <img src="media/img/task_image1.png" alt="Cover image default style 1" class="coverImage"> 
+                <img src="media/img/task_image2.png" alt="Cover image default style 2" class="coverImage">
+                <img src="media/img/task_image3.png" alt="Cover image default style 3" class="coverImage">
+                <img src="media/img/task_image4.png" alt="Cover image default style 4" class="coverImage">
+                <img src="media/img/task_image5.png" alt="Cover image default style 5" class="coverImage">
+            </div>
+
+            <label for="title"><strong>Title</strong></label>
+            <input type="text" name="title" id="title">
+
+            <label for="deadline" ><strong>Deadline</strong></label>
+            <input type="date" name="deadline" id="deadline">
+
+
+            <label for="categories"><strong>Category</strong></label>
+            <select name="categories" id="categories">
+                <option value="opt1">Opció1</option>
+                <option value="opt2">Opció2</option>
+                <option value="opt3">Opció3</option>
+            </select>
+
+            <label for="description"><strong>Description</strong></label>
+            <textarea name="description" id="description" cols="50" rows="10"></textarea>
+
+            <p id="errorMessage"></p>
+
+            <input type="checkbox" name="completed" id="completed">
+            <label for="completed"><strong>Completed</strong></label>
+
+            <button id="cancelTaskButton"><strong>Cancel</strong></button>
+            <button id="acceptTaskButton"><strong>Accept</strong></button>
+
+        </form>
+    </main>
 </body>
+
 </html>

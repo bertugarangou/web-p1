@@ -1,18 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta name="authors" content="Àlvaro Martínez, Albert Garangou & Pau Hinojosa">
-        <title>TODO++</title>
-        <link rel="stylesheet" href="./css/pages/index.css">
-    </head>
-<body>
-    <aside><!--Barra lateral : )-->
 
-    </aside>
-    <article><!--Llista de tasques-->
-        <p>hola roboto </p>
-    </article>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="authors" content="Àlvaro Martínez, Albert Garangou & Pau Hinojosa">
+    <title>TODO++</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/pages/index.css">
+    <META NAME="robots" CONTENT="nofollow">
+    <META name="description" content="TODO++, tasker website. Page used for the main view of the website: tasks, search, task settings.">
+    <META name="keywords" content="TODO, task, tasker, deadlines, university, programming, html, css, js, npm">
+</head>
+
+<body>
+    <main>
+        <aside>
+            <img src="media/img/web_main_icon.png" alt="Board with paper. Website logo." id="webLogo">
+            <p><strong>TODO++</strong></p>
+            <p>4 duties</p>
+            <p>1 urgent</p>
+
+            <button id="addTodo"><strong>Add TODO</strong></button>
+
+            <p id="today" class="asideViewButton">
+                <img src="media/img/vector_calendar.svg" alt="Calendar icon.">
+                <strong id="todayText" class="asideViewButtonText">Today</strong>
+            </p>
+            <p id="allDuties" class="asideViewButton">
+                <img src="media/img/vector_task.svg" alt="List with check and cross icon.">
+                <strong id="allDutiesText" class="asideViewButtonText">All duties</strong>
+            </p>
+            <p id="Categories" class="asideViewButton">
+                <img src="media/img/vector_figures.svg" alt="Figures icon: triangle circle and square.">
+                <strong id="categoriesText" class="asideViewButtonText">Categories</strong>
+            </p>
+
+            <!--Falta el desplegable de categories aquí-->
+        </aside>
+
+
+
+        <article>
+            <!--Títol que canvia-->
+            <h1>
+                <img src="media/img/vector_figures.svg" alt="List with check and cross icon.">
+                <strong>All duties</strong>
+            </h1>
+
+            <!--Barra de botons-->
+            <nav class="navBar">
+                <button id="selectAll"><strong>Select all</strong></button>
+            <button id="tick"><img src="media/img/tick.png" alt="Tick."></button>
+            <button id="trash"><img src="media/img/trash.png" alt="Trash."></button>
+            <!--Search box-->
+            <div>
+                <input id="searchBox" type="text">
+                <img src="media/img/search.png" alt="Magnifying glass. Search icon.">
+            </div>
+            </nav>
+
+            <div>
+                <!--TASCA 1-->
+            </div>
+            <div>
+                <!--TASCA 2-->
+            </div>
+
+
+        </article>
+
+
+    </main>
 </body>
 </html>
