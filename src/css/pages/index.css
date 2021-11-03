@@ -2,7 +2,10 @@ body {
     font-family: Roboto, sans-serif, Arial;/*3 fonts pel backup*/
     src: url(/webfonts/Roboto-Regular.ttf);
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    background-color: crimson;
 
 }
 
@@ -12,16 +15,22 @@ aside{
     height: 100%;
     left: 10px;
     top: 10px;
-
-    
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
     background: #FFF000;
     border-radius: 5px;
 }
 
 article{
     background: #E5E5E5;
+    display: block;
 }
-
+.navBar{
+    display: flex;
+    flex-direction: row;
+    background-color: darkmagenta;
+}
 
 #webLogo {
     position: absolute;
