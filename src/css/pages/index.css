@@ -1,4 +1,34 @@
 body {
     font-family: Roboto, sans-serif, Arial;/*3 fonts pel backup*/
     src: url(/webfonts/Roboto-Regular.ttf);
+    display: flex;
+    flex-direction: row;
+
+}
+
+aside{
+    position: absolute;
+    width: 22.8%;
+    height: 100%;
+    left: 10px;
+    top: 10px;
+
+    
+    background: #FFF000;
+    border-radius: 5px;
+}
+
+article{
+    background: #E5E5E5;
+}
+
+
+#webLogo {
+    position: absolute;
+    width: 111px;
+    height: 111px;
+    left: 47px;
+    top: 59px;
+
+    background: url(.png);
 }
