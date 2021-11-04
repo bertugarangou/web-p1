@@ -1,43 +1,69 @@
-body {
-    font-family: Roboto, sans-serif, Arial;/*3 fonts pel backup*/
-    src: url(/webfonts/Roboto-Regular.ttf);
-    display: flex;
-    flex-wrap: wrap;
 
-    justify-content: center;
-    background-color: crimson;
+
+.selectAll{
+    grid-area: selectAll;
+    padding-right: 10em;
+    background-color: royalblue;
+    border: 3px dashed purple;
+}
+.tick{
+    grid-area: tick;
+    padding-right: 10em;
+}
+.trash{
+    grid-area: trash;
+    padding-right: 10em;
+}
+.searchBox{
+    grid-area: searchBox;
+    border: 3px dashed purple;
+}
+.imageSearch{
+    grid-area: imageSearch;
+
+}
+nav.navBar{
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 50% 25% 25% 100%;
+    grid-template-areas: "selectAll tick trash searchBox imageSearch";
+    border: 3px dashed red;
+}
+
+
+article{
+    
+    grid-area: articulo;
+    border: 3px dashed royalblue;
 
 }
 
+#webLogo {
+    position: relative;
+    width: 111px;
+    height: 111px;
+    left: 47px;
+    top: 59px;
+    background: url(.png);
+}
 aside{
     position: absolute;
     width: 22.8%;
     height: 100%;
     left: 10px;
     top: 10px;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    background: #FFF000;
+    grid-area: columnaIzq;
+    background: #E5E5E5;
+    border: 1px dashed blue;
     border-radius: 5px;
 }
-
-article{
-    background: #E5E5E5;
-    display: block;
-}
-.navBar{
-    display: flex;
-    flex-direction: row;
-    background-color: darkmagenta;
-}
-
-#webLogo {
-    position: absolute;
-    width: 111px;
-    height: 111px;
-    left: 47px;
-    top: 59px;
-
-    background: url(.png);
+body {
+    font-family: Roboto, sans-serif, Arial;/*3 fonts pel backup*/
+    src: url(/webfonts/Roboto-Regular.ttf);
+    display: grid;
+    grid-template-columns: 100% 100%;
+    grid-template: 'columnaIzq articulo';
+    justify-content: center;
+    
+    background:white;
 }
