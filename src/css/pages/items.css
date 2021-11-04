@@ -1,0 +1,60 @@
+button {
+    border: none;
+    font-size: 24px;
+    margin: 30px 30px;
+    border-radius: 5px;
+    font-family: 'Roboto';
+}
+
+button.b1{
+    background-color: #6247AA;
+    color: white;
+    height: 52px;
+    width: 292px;
+}
+
+button.b2 {
+    background-color: #AAA1C8;
+    color: black;
+    height: 56px;
+    width: 172px;
+}
+
+.b2:active {
+    background-color: #6247AA;
+    color: white;
+}
+
+button.b3 {
+    background-color: #AAA1C8;
+    color: black;
+    height: 56px;
+    width: 219px;
+}
+
+.b3:active {
+    background-color: #8B74D8;
+    color: black;
+}
+
+.emote {
+    border: none;
+    height: 56px;
+    width: 56px;
+    margin: 30px 30px;
+    border-radius: 5px;
+    background-color: #AAA1C8;
+}
+
+.emote:active {
+    background-color: #8B74D8;
+}
+
+.emote:disabled {
+    background-color: #C6C6C6;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url(../../../webfonts/Roboto-Bold.ttf);
+}
