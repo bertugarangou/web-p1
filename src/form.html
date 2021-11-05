@@ -11,7 +11,8 @@
     <META NAME="robots" CONTENT="nofollow">
     <META name="description" content="TODO++, tasker website. Page used for adding and creating new tasks.">
     <META name="keywords" content="TODO, task, tasker, deadlines, university, programming, html, css, js, npm">
-        <script src="script.js"></script>
+    <!--<script src="script.js"></script>-->
+        
 </head>
 
 <body>
@@ -47,14 +48,23 @@
             <label for="description"><strong>Description</strong></label>
             <textarea name="description" id="description" cols="50" rows="10"></textarea>
 
-            <p id="errorMessage"></p>
+            <div class="errorArea">
+                <span id="errorTitle">Title required. Maximum 100 characters length.</span>
+                <span id="errorDeadline">Deadline required.</span>
+                <span id="errorCategory">One Category at least is required.</span>
+                <span id="erorrDescription">Description required. Maximum 1000 characters length.</span>
+                
+            </div>
 
-            <input type="checkbox" name="completed" id="completed">
-            <label for="completed"><strong>Completed</strong></label>
-
-            <button class="b3"><strong>Cancel</strong></button>
-            <button class="b3"><strong>Accept</strong></button>
-
+            <div class="endButtons">
+                <input type="checkbox" name="completed" id="completed">
+                <label for="completed"><strong>Completed</strong></label>
+    
+                <button class="b3"><strong>Cancel</strong></button>
+                <button class="b3"><strong>Accept</strong></button>
+    
+            </div>
+            
         </form>
     </main>
 </body>
