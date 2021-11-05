@@ -51,6 +51,7 @@ main{
 }
 
 .endButtons{
+    display: flex;
     justify-content: center;
 
 }

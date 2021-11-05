@@ -7,78 +7,97 @@
     <meta name="authors" content="Álvaro Martínez, Albert Garangou & Pau Hinojosa">
     <title>TODO++</title>
     <link rel="stylesheet" href="./css/normalize.css">
-    <link rel="stylesheet" href="./css/pages/index.css">
+    <link rel="stylesheet" href="./css/pages/index2.css">
     <META NAME="robots" CONTENT="nofollow">
-    <META name="description" content="TODO++, tasker website. Page used for the main view of the website: tasks, search, task settings.">
+    <META name="description"
+        content="TODO++, tasker website. Page used for the main view of the website: tasks, search, task settings.">
     <META name="keywords" content="TODO, task, tasker, deadlines, university, programming, html, css, js, npm">
     <!--<script src="script.js"></script>-->
 </head>
 
 <body>
-    <main>
-        <aside>
+    <main class="bloc">
+        <div class="menu">
+            <!--BARRA DEL COSTAT-->
             <div class="topInfo">
-                <img src="media/img/web_main_icon.png" alt="Board with paper. Website logo." id="webLogo" height="111" width="111">
+                <img src="media/img/web_main_icon.png" alt="Board with paper. Website logo." id="webLogo" height="111"
+                    width="111">
                 <div class="topInfoText">
-                    <p><strong>TODO++</strong></p>
-                    <p>4 duties</p>
-                    <p>1 urgent</p>
+                    <h1 class="title-todo"><strong>TODO++</strong></h1>
+                    <p class="duties">4 duties</p>
+                    <p class="urgents">1 urgent</p>
                 </div>
             </div>
+
+            <button class="add-task-button">Add TODO</button>
+            <div class="order-modes">
+
             
-
-            <button class="b1">Add TODO</button>
-
             <p id="today" class="asideViewButton">
-                <img src="media/img/vector_calendar.svg" alt="Calendar icon.">
+                <img class="asideViewButtonImg" src="media/img/vector_calendar.svg" alt="Calendar icon.">
                 <strong id="todayText" class="asideViewButtonText">Today</strong>
             </p>
             <p id="allDuties" class="asideViewButton">
-                <img src="media/img/vector_task.svg" alt="List with check and cross icon.">
+                <img class="asideViewButtonImg" src="media/img/vector_task.svg" alt="List with check and cross icon.">
                 <strong id="allDutiesText" class="asideViewButtonText">All duties</strong>
             </p>
             <p id="Categories" class="asideViewButton">
-                <img src="media/img/vector_figures.svg" alt="Figures icon: triangle circle and square.">
+                <img class="asideViewButtonImg" src="media/img/vector_figures.svg" alt="Figures icon: triangle circle and square.">
                 <strong id="categoriesText" class="asideViewButtonText">Categories</strong>
             </p>
-
+        </div>
             <!--Falta el desplegable de categories aquí-->
-        </aside>
 
-        <article>
-            <!--Títol que canvia-->
-            <h1 class="AllDuties">
-                <img src="media/img/vector_figures.svg" alt="List with check and cross icon.">
-                <strong>All duties</strong>
-            </h1>
 
-            <!--Barra de botons-->
-            <nav class="navBar">
-                <button class="selectAll">Select all</button>
-                <button class="btnTickTrash">
-                    <img src="media/img/tick.png" alt="tick">
-                </button>
-                <button class="btnTickTrash">
-                    <img src="media/img/trash.png" alt="trash">
-                </button>
-                <!--Search box-->
+
+        </div>
+        <div class="principal">
+            <div class="titol">
+                <div>
+                    <img src="media/img/vector_task.svg" alt="List with check and cross icon.">
+                    <strong class="titol-principal">All duties</strong>
+                </div>
                 
-                <input class="searchBox" type="text">
-                <img class="imageSearch" src="media/img/search.png" alt="Magnifying glass. Search icon.">
-                
-            </nav>
 
-            <div>
-                <!--TASCA 1-->
+
             </div>
-            <div>
-                <!--TASCA 2-->
+            <div class="barra">
+                <!--TOP BAR EINES-->
+                <div class="barra-1">
+                  <button class="selectAll">Select all</button>
+                    <!--BOTO 1-->
+                    <button class="btnTickTrash">
+                        <img src="media/img/tick.png" alt="tick">
+                    </button>
+                    <button class="btnTickTrash">
+                        <img src="media/img/trash.png" alt="trash">
+                    </button>
+                    <!--BOTONS TICK TRASH-->   
+                </div>
+                <div class="barra-2">
+                    <!--ESPAIS-->
+                </div>
+                <div class="barra-3">
+                    <!--SEARCHBOX-->
+                    <div class="searchbox-back">
+                        <input class="searchBox" type="text">
+                        <img class="imageSearch" src="media/img/search.png" alt="Magnifying glass. Search icon.">
+                    </div >
+                </div>
             </div>
 
+            <div class="tasques">
+                <!--TASQUES-->
+            </div>
+        </div>
 
-        </article>
+
+
+
 
 
     </main>
+
 </body>
+
 </html>
