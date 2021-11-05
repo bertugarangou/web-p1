@@ -20,8 +20,9 @@
         <div class="menu">
             <!--BARRA DEL COSTAT-->
             <div class="topInfo">
-                <img src="media/img/web_main_icon.png" alt="Board with paper. Website logo." id="webLogo" height="111"
-                    width="111">
+                <a href=""><img src="media/img/web_main_icon.png" alt="Board with paper. Website logo." id="webLogo"
+                        height="111" width="111"></a>
+
                 <div class="topInfoText">
                     <h1 class="title-todo"><strong>TODO++</strong></h1>
                     <p class="duties">4 duties</p>
@@ -32,20 +33,22 @@
             <button class="add-task-button">Add TODO</button>
             <div class="order-modes">
 
-            
-            <p id="today" class="asideViewButton">
-                <img class="asideViewButtonImg" src="media/img/vector_calendar.svg" alt="Calendar icon.">
-                <strong id="todayText" class="asideViewButtonText">Today</strong>
-            </p>
-            <p id="allDuties" class="asideViewButton">
-                <img class="asideViewButtonImg" src="media/img/vector_task.svg" alt="List with check and cross icon.">
-                <strong id="allDutiesText" class="asideViewButtonText">All duties</strong>
-            </p>
-            <p id="Categories" class="asideViewButton">
-                <img class="asideViewButtonImg" src="media/img/vector_figures.svg" alt="Figures icon: triangle circle and square.">
-                <strong id="categoriesText" class="asideViewButtonText">Categories</strong>
-            </p>
-        </div>
+
+                <p id="today" class="asideViewButton">
+                    <img class="asideViewButtonImg" src="media/img/vector_calendar.svg" alt="Calendar icon.">
+                    <strong id="todayText" class="asideViewButtonText">Today</strong>
+                </p>
+                <p id="allDuties" class="asideViewButton">
+                    <img class="asideViewButtonImg" src="media/img/vector_task.svg"
+                        alt="List with check and cross icon.">
+                    <strong id="allDutiesText" class="asideViewButtonText">All duties</strong>
+                </p>
+                <p id="Categories" class="asideViewButton">
+                    <img class="asideViewButtonImg" src="media/img/vector_figures.svg"
+                        alt="Figures icon: triangle circle and square.">
+                    <strong id="categoriesText" class="asideViewButtonText">Categories</strong>
+                </p>
+            </div>
             <!--Falta el desplegable de categories aquí-->
 
 
@@ -57,22 +60,22 @@
                     <img src="media/img/vector_task.svg" alt="List with check and cross icon.">
                     <strong class="titol-principal">All duties</strong>
                 </div>
-                
+
 
 
             </div>
             <div class="barra">
                 <!--TOP BAR EINES-->
                 <div class="barra-1">
-                  <button class="selectAll">Select all</button>
+                    <button class="selectAll">Select all</button>
                     <!--BOTO 1-->
-                    <button class="btnTickTrash">
+                    <button class="btnTickTrash" id="tickButton" disabled>
                         <img src="media/img/tick.png" alt="tick">
                     </button>
-                    <button class="btnTickTrash">
+                    <button class="btnTickTrash" id="trashButton" disabled>
                         <img src="media/img/trash.png" alt="trash">
                     </button>
-                    <!--BOTONS TICK TRASH-->   
+                    <!--BOTONS TICK TRASH-->
                 </div>
                 <div class="barra-2">
                     <!--ESPAIS-->
@@ -82,7 +85,7 @@
                     <div class="searchbox-back">
                         <input class="searchBox" type="text">
                         <img class="imageSearch" src="media/img/search.png" alt="Magnifying glass. Search icon.">
-                    </div >
+                    </div>
                 </div>
             </div>
 
