@@ -120,6 +120,7 @@ main {
 	height: 56px;
 	width: auto;
 	border-radius: 5px;
+    padding-left: 8px;
 }
 
 .imageSearch {
@@ -179,7 +180,7 @@ button.add-task-button {
 }
 
 button.add-task-button:hover {
-	background-color: #AAA1C8;
+	background-color: #785dda;
 	color: white;
 }
 
@@ -222,4 +223,75 @@ button.selectAll {
 
 .btnTickTrash:disabled {
 	background-color: #C6C6C6;
+}
+
+.asideViewButton:hover {
+    color: #6247AA;
+}
+
+.selectCategory {
+    display: flex;
+    gap: 8px;
+}
+
+.rectangle {
+    width: 66px;
+    height: 34px;
+    background: #dcdbe0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.square1 {
+    width: 34px;
+    height: 34px;
+    border-radius: 5px;
+    background: #c1bfc1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.square1:hover {
+    background: #a5a5a5;
+}
+
+.square2 {
+    width: 34px;
+    height: 34px;
+    border-radius: 5px;
+    background: #c1bfc1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.square2:hover {
+    background: #a5a5a5;
+}
+
+.categorySearch {
+    width: 174px;
+    height: 34px;
+    background: #dcdbe0;
+    border: none;
+    border-radius: 5px;
+    padding-left: 8px;
+}
+
+.categoryList {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    margin-left: 35px;
+}
+
+.categoryColor {
+    margin-left: 7px;
+}
+
+.cross {
+    background-color: transparent;
 }
