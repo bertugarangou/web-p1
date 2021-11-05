@@ -4,6 +4,16 @@ body {
     display: flex;
 }
 
+@font-face {
+    font-family: "Roboto";
+    src: url("../../webfont/Roboto-Bold.ttf");
+}
+@font-face {
+    font-family: "Roboto";
+    src: url("../../webfont/Roboto-Bold.ttf");
+    font-weight: bold;
+}
+
 .coverImage{
     size: 58px;
     border-radius: 5px;

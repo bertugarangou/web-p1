@@ -1,3 +1,24 @@
+body {
+    font-family: Roboto, sans-serif, Arial;/*3 fonts pel backup*/
+    display: grid;
+    grid-template-columns: 100% 100%;
+    grid-template: 'columnaIzq articulo';
+    justify-content: center;
+    
+    background:#F1F1F1;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../../webfont/Roboto-Bold.ttf");
+}
+@font-face {
+    font-family: "Roboto";
+    src: url("../../webfont/Roboto-Bold.ttf");
+    font-weight: bold;
+}
+
+
 .tick{
     grid-area: tick;
     padding-right: 10em;
@@ -51,15 +72,7 @@ aside {
     border: 1px dashed blue;
     border-radius: 5px;
 }
-body {
-    font-family: Roboto, sans-serif, Arial;/*3 fonts pel backup*/
-    display: grid;
-    grid-template-columns: 100% 100%;
-    grid-template: 'columnaIzq articulo';
-    justify-content: center;
-    
-    background:#F1F1F1;
-}
+
 
 button {
     border: none;
