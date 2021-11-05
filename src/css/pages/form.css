@@ -2,3 +2,22 @@ body {
     font-family: Roboto, sans-serif, Arial;/*3 fonts pel backup*/
     src: url(/webfonts/Roboto-Regular.ttf);
   }
+  button {
+    border: none;
+    font-size: 24px;
+    margin: 30px 30px;
+    border-radius: 5px;
+    font-family: 'Roboto';
+  }
+
+  button.b3 {
+    background-color: #AAA1C8;
+    color: black;
+    height: 56px;
+    width: 219px;
+}
+
+.b3:active {
+    background-color: #8B74D8;
+    color: black;
+}

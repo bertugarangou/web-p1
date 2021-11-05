@@ -1,19 +1,21 @@
-
-
-.selectAll{
-    grid-area: selectAll;
-    padding-right: 10em;
-    background-color: royalblue;
-    border: 3px dashed purple;
-}
 .tick{
     grid-area: tick;
     padding-right: 10em;
 }
 .trash{
     grid-area: trash;
-    padding-right: 10em;
+    
 }
+
+.btnTickTrash {
+    border: none;
+    height: 56px;
+    width: 56px;
+    margin: 30px 1px;
+    border-radius: 5px;
+    background-color: #AAA1C8;
+}
+
 .searchBox{
     grid-area: searchBox;
     border: 3px dashed purple;
@@ -44,7 +46,6 @@ article{
     height: 111px;
     left: 47px;
     top: 59px;
-    background: url(.png);
 }
 aside{
     position: absolute;
@@ -66,4 +67,54 @@ body {
     justify-content: center;
     
     background:white;
+}
+
+button {
+    border: none;
+    font-size: 24px;
+    margin: 30px 30px;
+    border-radius: 5px;
+    font-family: 'Roboto';
+}
+
+button.b1{
+    background-color: #6247AA;
+    color: white;
+    font-weight: bold;
+    height: 52px;
+    width: 292px;
+}
+
+button.selectAll {
+    background-color: #AAA1C8;
+    grid-area: selectAll;
+    color: black;
+    height: 56px;
+    width: 172px;
+    font-weight: bold;
+}
+
+.selectAll:active {
+    background-color: #6247AA;
+    color: white;
+}
+
+button.b3 {
+    background-color: #AAA1C8;
+    color: black;
+    height: 56px;
+    width: 219px;
+}
+
+.b3:active {
+    background-color: #8B74D8;
+    color: black;
+}
+
+.btnTickTrash:active {
+    background-color: #8B74D8;
+}
+
+.btnTickTrash:disabled {
+    background-color: #C6C6C6;
 }
