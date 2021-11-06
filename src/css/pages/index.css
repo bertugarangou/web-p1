@@ -232,6 +232,7 @@ button.selectAll {
 .selectCategory {
     display: flex;
     gap: 8px;
+	margin-left: 15px;
 }
 
 .rectangle {
