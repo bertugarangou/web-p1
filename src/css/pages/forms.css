@@ -51,69 +51,67 @@ main {
 
 .images {
 	grid-area: images;
-    display: flex;
-    justify-content: left;
-    align-items: center;
+	display: flex;
+	justify-content: left;
+	align-items: center;
 }
 
-.coverImageSelected{
-    margin: 20px 15px 20px 0px;
-    height: 120px;
-    width: 120px;
-}
-.coverImagesBox{
-    background-color: rgba(170, 161, 200, 0.25);
-    border-radius: 5px;
-    align-self: center;
-    height: 82px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    
-}
-.coverImage{
-    margin: 20px;
+.coverImageSelected {
+	margin: 20px 15px 20px 0px;
+	height: 120px;
+	width: 120px;
 }
 
+.coverImagesBox {
+	background-color: rgba(170, 161, 200, 0.25);
+	border-radius: 5px;
+	align-self: center;
+	height: 82px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
 
+.coverImage {
+	margin: 20px;
+}
 
 .data-input-1 {
-    display: grid;
-    grid-template-columns: 67% 33%;
-    grid-template-areas:
-      "title-box deadline-box";
-  }
-  
-  .title-box { 
-      grid-area: title-box;
-      display: flex;
-      flex-direction: column;
-      margin-right: 44px;
-      
-    }
-  
-  .deadline-box { 
-      grid-area: deadline-box; 
-      display:flex;
-      flex-direction: column;
-    }
-.title-box [for="title"]{
-    margin-bottom: 10px;
-    color: #6247AA;
-}
-.deadline-box [for="deadline"]{
-    margin-bottom: 10px;
+	display: grid;
+	grid-template-columns: 67% 33%;
+	grid-template-areas: "title-box deadline-box";
 }
 
-.inputCustom{
-    margin-bottom: 10px;
-    background: rgba(170, 161, 200, 0.25);
-    border: none;
-    border-radius: 5px;
-    height: 40%;
-    padding-left: 8px;
+.title-box {
+	grid-area: title-box;
+	display: flex;
+	flex-direction: column;
+	margin-right: 44px;
 }
 
+.deadline-box {
+	grid-area: deadline-box;
+	display: flex;
+	flex-direction: column;
+}
+
+.title-box [for="title"] {
+	margin-bottom: 10px;
+	color: #6247AA;
+}
+
+.deadline-box [for="deadline"] {
+	margin-bottom: 10px;
+}
+
+.inputCustom {
+	margin-bottom: 10px;
+	background: rgba(170, 161, 200, 0.25);
+	border: none;
+	border-radius: 5px;
+	height: 40%;
+	padding-left: 8px;
+}
 
 .data-input-2 {
 	grid-area: data-input-2;
@@ -128,7 +126,7 @@ main {
 [name="categories"] {
 	width: 200px;
 	height: 46px;
-    border-radius: 5px;
+	border-radius: 5px;
 	text-align: center;
 	border: none;
 	background: rgba(170, 161, 200, 0.25);
@@ -149,6 +147,7 @@ main {
 	padding: 8px;
 	border: none;
 	border-radius: 5px;
+	resize: none;
 }
 
 .bottom-data-input {
@@ -175,42 +174,36 @@ main {
 .buttons-bottom-zone {
 	grid-area: buttons-bottom-zone;
 	display: flex;
-    justify-content: center;
-    align-items: center;
-
+	justify-content: center;
+	align-items: center;
 }
-
-
-
 
 .buttonCheckbox {
-    margin: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-  left: 15%;
-
+	margin: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	left: 15%;
 }
-#completedCheck{
-    width: 20px;
-    height: 20px;
-    border-radius: 5px;
-    margin-right: 8px;
 
-    background-color: white;
+#completedCheck {
+	width: 20px;
+	height: 20px;
+	border-radius: 5px;
+	margin-right: 8px;
+	background-color: white;
 }
+
 .side-space {
 	grid-area: side-space;
 	width: 100%;
 	height: 100%;
 }
 
-
-.title-box:hover{
-    text-emphasis-color: red;
+.title-box:hover {
+	text-emphasis-color: red;
 }
-
 
 .side-space-2 {
 	grid-area: side-space-2;
@@ -232,7 +225,6 @@ button.sendBtn {
 	width: 219px;
 	justify-content: center;
 	margin: 0px 9px 0px 9px;
-
 }
 
 .sendBtn:active {
@@ -243,5 +235,4 @@ button.sendBtn {
 .sendBtn:hover {
 	background-color: #8B74D8;
 	color: black;
-    
 }
