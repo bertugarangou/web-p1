@@ -1,12 +1,11 @@
-html {
+html{
 	height: 100%;
 }
-
 body {
 	font-family: Roboto, sans-serif, Arial;
 	/*3 fonts pel backup*/
-	height: 100%;
 	background: #F1F1F1;
+	height: 100%;
 }
 
 @font-face {
@@ -22,12 +21,12 @@ body {
 
 main {
 	display: grid;
+	height: 100%;
 	grid-template-columns: 0.4fr 1.6fr;
 	grid-template-rows: 1fr;
 	gap: 0px 0px;
 	grid-auto-flow: row;
 	grid-template-areas: "menu principal";
-	height: 100%;
 	background: #F1F1F1;
 }
 
@@ -128,8 +127,9 @@ main {
 }
 
 .imageSearch {
-	height: 30px;
-	width: 30px;
+	height: 25px;
+	width: 25px;
+	margin-right: 5px;
 }
 
 .searchbox-back {
@@ -333,12 +333,13 @@ button.selectAll {
 
 .taskRectangle {
     background-color: white;
-    width: 850px;
+    width: 86%;
     height: 88px;
     border-radius: 5px;
     box-shadow: 0px 4px 3px rgb(172, 167, 167);
     display: flex;
-    flex-wrap: wrap;
+	justify-self: left;
+	justify-content: space-between;
 }
 
 .taskRectangle:hover {
@@ -351,13 +352,15 @@ button.selectAll {
     display: flex;
     justify-content: center;
     align-items: center;
+	justify-self: left;
 }
 
 .container2 {
-    width: 395px;
+    width: 100%;
     height: 88px;
     align-items: center;
     justify-content: left;
+	justify-self: left;
 }
 
 .taskTitle {
@@ -378,6 +381,7 @@ button.selectAll {
     height: 88px;
     display: flex;
     flex-direction: column;
+	justify-self: right;
 }
 
 .container4 {
@@ -395,7 +399,7 @@ button.selectAll {
 }
 
 .container5 {
-    width: 350px;
+    width: 100%;
     height: 20px;
     display: flex;
     justify-content: center;

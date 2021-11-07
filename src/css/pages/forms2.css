@@ -1,0 +1,202 @@
+body {
+	font-family: Roboto, sans-serif, Arial;
+	/*3 fonts pel backup*/
+	background: #F1F1F1;
+	height: 100%;
+}
+
+html {
+	height: 100%;
+}
+
+main {
+	height: 100%;
+}
+
+@font-face {
+	font-family: "Roboto";
+	src: url("../../webfont/Roboto-Bold.ttf");
+}
+
+@font-face {
+	font-family: "Roboto";
+	src: url("../../webfont/Roboto-Bold.ttf");
+	font-weight: bold;
+}
+
+
+/******     ********     **********     *******/
+
+.container {
+	display: grid;
+	grid-template-columns: 15% 70% 15%;
+	grid-template-rows: 1fr;
+	gap: 0px 0px;
+	height: 100%;
+	grid-auto-flow: row;
+	grid-template-areas: "side-space contingut side-space-2";
+}
+
+.contingut {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 24.9% 15.5% 15.4% 23.7% 20.5%;
+	gap: 0px 0px;
+	grid-auto-flow: row;
+	grid-template-areas: "images" "data-input-1" "data-input-2" "data-input-3" "bottom-data-input";
+	grid-area: contingut;
+	width: 100%;
+	height: 100%;
+}
+
+.images {
+	grid-area: images;
+}
+
+
+
+
+.data-input-1 {
+    display: grid;
+    grid-template-columns: 67% 33%;
+    grid-template-areas:
+      "title-box deadline-box";
+  }
+  
+  .title-box { 
+      grid-area: title-box;
+      display: flex;
+      flex-direction: column;
+      margin-right: 44px;
+      
+    }
+  
+  .deadline-box { 
+      grid-area: deadline-box; 
+      display:flex;
+      flex-direction: column;
+    }
+.title-box [for="title"]{
+    margin-bottom: 10px;
+    color: #6247AA;
+}
+.deadline-box [for="deadline"]{
+    margin-bottom: 10px;
+}
+
+.inputCustom{
+    margin-bottom: 10px;
+    background: rgba(170, 161, 200, 0.25);
+    border: none;
+    border-radius: 5px;
+    height: 40%;
+    padding-left: 8px;
+}
+
+
+.data-input-2 {
+	grid-area: data-input-2;
+	display: flex;
+	flex-direction: column;
+}
+
+[for="categories"] {
+	margin-bottom: 10px;
+}
+
+[name="categories"] {
+	width: 200px;
+	height: 46px;
+    border-radius: 5px;
+	text-align: center;
+	border: none;
+	background: rgba(170, 161, 200, 0.25);
+}
+
+.data-input-3 {
+	grid-area: data-input-3;
+	display: flex;
+	flex-direction: column;
+}
+
+[for="description"] {
+	margin-bottom: 8px;
+}
+
+[name="description"] {
+	background: rgba(170, 161, 200, 0.25);
+	padding: 8px;
+	border: none;
+	border-radius: 5px;
+}
+
+.bottom-data-input {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 40% 60%;
+	gap: 0px 0px;
+	grid-auto-flow: row;
+	grid-template-areas: "error-zone" "buttons-bottom-zone";
+	grid-area: bottom-data-input;
+}
+
+.error-zone {
+	grid-area: error-zone;
+	margin: 20px 30px 20px 30px;
+	font-weight: bold;
+	color: red;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.buttons-bottom-zone {
+	grid-area: buttons-bottom-zone;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.completed {
+	justify-self: left;
+	order: -1;
+}
+
+.side-space {
+	grid-area: side-space;
+	width: 100%;
+	height: 100%;
+}
+
+.side-space-2 {
+	grid-area: side-space-2;
+	width: 100%;
+	height: 100%;
+}
+
+button {
+	border: none;
+	font-size: 24px;
+	border-radius: 5px;
+	font-family: 'Roboto';
+}
+
+button.sendBtn {
+	background-color: #AAA1C8;
+	color: black;
+	height: 56px;
+	width: 219px;
+	justify-content: center;
+	margin: 0px 9px 0px 9px;
+}
+
+.sendBtn:active {
+	background-color: #8B74D8;
+	color: black;
+}
+
+.sendBtn:hover {
+	background-color: #8B74D8;
+	color: black;
+}

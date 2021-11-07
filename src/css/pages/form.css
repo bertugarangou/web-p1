@@ -21,14 +21,6 @@ body {
 	border-radius: 5px;
 }
 
-button {
-	border: none;
-	font-size: 24px;
-	margin: 30px 30px;
-	border-radius: 5px;
-	font-family: 'Roboto';
-}
-
 button.b3 {
 	background-color: #AAA1C8;
 	color: black;
@@ -39,13 +31,6 @@ button.b3 {
 .b3:active {
 	background-color: #8B74D8;
 	color: black;
-}
-
-.errorArea {
-	text-align: center;
-	margin: 20px 30px 20px 30px;
-	font-weight: bold;
-	color: red
 }
 
 main {
