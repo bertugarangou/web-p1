@@ -5,6 +5,7 @@ document.querySelector(".selectAll").addEventListener("click", event => {
         element.checked = checkedAll;
     });
     checkedAll = !checkedAll;
+    actualitzarTrashButton()
 });
 
 
@@ -46,6 +47,7 @@ document.querySelector("#trashButton").addEventListener("click", async event => 
     
     document.querySelector(".tasklist").innerHTML = "";
     await carregarTodos();
+    await calcularDuties();
 });
 
 document.querySelector(".add-task-button").addEventListener("click", event => {
@@ -64,6 +66,8 @@ document.querySelector(".add-task-button").addEventListener("click", event => {
 */
 document.addEventListener("DOMContentLoaded", async event => {
     await carregarTodos();
+    await calcularDuties();
+    await calcularUrgents();
 });
 
 async function getTodos(){
@@ -72,6 +76,22 @@ async function getTodos(){
         return [];
     }
     return await JSON.parse(raw);
+}
+
+
+async function calcularDuties(){
+    const duties = JSON.parse(localStorage.todos).length;
+    console.log(duties);
+    const dutiesHTML = document.querySelector(".duties");
+    dutiesHTML.innerHTML = `<p class="duties">${duties} duties</p>`;
+}
+
+async function calcularUrgents(){
+    var tasks = await getTodos();
+    tasks.forEach(tasks => {
+        
+        
+    });
 }
 
 async function carregarTodos(){
