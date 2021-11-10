@@ -215,6 +215,29 @@ button.selectAll {
 	color: white;
 }
 
+#today:active {
+	color: #6247AA;
+	fill: #6247AA;
+}
+
+#today:hover{
+	color: #6247AA;
+	fill: #6247AA;
+}
+
+#allDuties:active {
+	color: #6247AA;
+	fill: #6247AA;
+}
+
+#allDuties:hover {
+	color: #6247AA;
+	fill: #6247AA;
+}
+.asideViewButtonImg{
+	fill: red;
+}
+
 .btnTickTrash {
 	border: none;
 	height: 56px;
@@ -235,10 +258,6 @@ button.selectAll {
 
 .btnTickTrash:disabled {
 	background-color: #C6C6C6;
-}
-
-.asideViewButton:hover {
-    color: #6247AA;
 }
 
 .selectCategory {

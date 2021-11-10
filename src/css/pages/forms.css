@@ -74,6 +74,7 @@ main {
 
 .coverImage {
 	margin: 20px;
+	cursor: pointer;
 }
 
 .data-input-1 {
@@ -95,9 +96,16 @@ main {
 	flex-direction: column;
 }
 
+.deadline-box:active {
+	color: #6247AA;
+}
+
+.deadline-box:hover{
+	color: #6247AA;
+}
+
 .title-box [for="title"] {
 	margin-bottom: 10px;
-	color: #6247AA;
 }
 
 .deadline-box [for="deadline"] {
@@ -113,10 +121,26 @@ main {
 	padding-left: 8px;
 }
 
+.title-box:active {
+	color: #6247AA;
+}
+
+.title-box:hover{
+	color: #6247AA;
+}
+
 .data-input-2 {
 	grid-area: data-input-2;
 	display: flex;
 	flex-direction: column;
+}
+
+.data-input-2:active {
+	color: #6247AA;
+}
+
+.data-input-2:hover {
+	color: #6247AA;
 }
 
 [for="categories"] {
@@ -136,6 +160,14 @@ main {
 	grid-area: data-input-3;
 	display: flex;
 	flex-direction: column;
+}
+
+.data-input-3:active {
+	color: #6247AA;
+}
+
+.data-input-3:hover {
+	color: #6247AA;
 }
 
 [for="description"] {
