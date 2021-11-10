@@ -83,11 +83,19 @@ main {
 	grid-template-areas: "title-box deadline-box";
 }
 
+.title {
+	font-size: 24px;
+}
+
 .title-box {
 	grid-area: title-box;
 	display: flex;
 	flex-direction: column;
 	margin-right: 44px;
+}
+
+.deadline {
+	font-size: 24px;
 }
 
 .deadline-box {
@@ -143,7 +151,17 @@ main {
 	color: #6247AA;
 }
 
-[for="categories"] {
+.categoryLabel {
+	font-size: 24px;
+}
+
+#categories {
+	font-size: 24px;
+	width: 240px;
+	height: 56px;
+}
+
+[for="categories"]  {
 	margin-bottom: 10px;
 }
 
@@ -168,6 +186,10 @@ main {
 
 .data-input-3:hover {
 	color: #6247AA;
+}
+
+.descriptionLabel {
+	font-size: 24px;
 }
 
 [for="description"] {
@@ -217,6 +239,7 @@ main {
 	align-items: center;
 	position: absolute;
 	left: 15%;
+	font-size: 24px;
 }
 
 #completedCheck {

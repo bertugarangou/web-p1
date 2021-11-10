@@ -8,7 +8,6 @@ document.querySelector(".selectAll").addEventListener("click", event => {
     actualitzarTrashButton()
 });
 
-
 function actualitzarTrashButton(){
     var algun = false;
     document.querySelectorAll(".checkbox").forEach(element => {
@@ -68,6 +67,7 @@ document.addEventListener("DOMContentLoaded", async event => {
     await carregarTodos();
     await calcularDuties();
     await calcularUrgents();
+
 });
 
 async function getTodos(){
@@ -76,22 +76,43 @@ async function getTodos(){
         return [];
     }
     return await JSON.parse(raw);
+    
+/*
+
+var milliseconds = task.id * 1000;
+
+var dateObject = new Date(milliseconds);
+var humanDateFormat = dateObject.toLocaleString();
+
+Math.abs(Date.now - humanDateFormat);
+*/
 }
 
 
 async function calcularDuties(){
     const duties = JSON.parse(localStorage.todos).length;
-    console.log(duties);
     const dutiesHTML = document.querySelector(".duties");
     dutiesHTML.innerHTML = `<p class="duties">${duties} duties</p>`;
 }
 
-async function calcularUrgents(){
+async function calcularUrgents(){/*Només calcula, no actualita el text a la tasca de moment*/
     var tasks = await getTodos();
-    tasks.forEach(tasks => {
-        
-        
+    var numberOfUrgents = 0;
+    tasks.forEach(task => {
+        if(Date.now() - task.id  > 604800000){//604800000 = one week
+            
+            //TODO: marcar tasca urgent
+
+            const urgentText = document.querySelector(`#todo-${task.id} .urgentState`);
+            urgentText.innerHTML = `<p>Urgent!</p>`;
+            numberOfUrgents++;
+        }
     });
+
+
+    const urgentDuty = document.querySelector(".urgents");
+    urgentDuty.innerHTML = `<p class="urgents">${numberOfUrgents} urgent</p>`
+    numberOfUrgents = 0;
 }
 
 async function carregarTodos(){
@@ -116,6 +137,8 @@ async function carregarTodos(){
             </div>
             <div class="container3">
                 <div class="container4">
+                    <div class="urgentState">
+                    </div>
                     <p class="taskDate">${deadline}</p>
                 </div>
                 <div class="container5">

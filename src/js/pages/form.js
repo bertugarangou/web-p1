@@ -28,19 +28,16 @@ document.querySelector("#acceptBtn").addEventListener("click", async event => {
     const errorZone = document.querySelector(".error-zone");
     errorZone.innerHTML = ``;
     if(todo.titol.length == 0 || todo.titol.length > 100){
-        console.log("titol: " + todo.titol);
         var errorFlag = 1;
-        errorZone.innerHTML += `<span id="errorTitle">Title required. Maximum 100 characters length. </span>`;
+        errorZone.innerHTML += `<span id="errorTitle">Title required. Maximum 100 characters length.ㅤ</span>`;
     }
     if(todo.descripcio.length == 0 || todo.descripcio.length > 1000){
-        console.log("desc");
         var errorFlag = 1;
-        errorZone.innerHTML += `<span id="erorrDescription"> Description required. Maximum 1000 characters length. </span>`;
+        errorZone.innerHTML += `<span id="erorrDescription"> Description required. Maximum 1000 characters length.ㅤ</span>`;
     }
     if(todo.deadline.length == 0){
-        console.log("error date");
         var errorFlag = 1;
-        errorZone.innerHTML += `<span id="errorDeadline"> Deadline required. </span>`;
+        errorZone.innerHTML += `<span id="errorDeadline"> Deadline required.ㅤ</span>`;
     }
     if(errorFlag != 1){
 
