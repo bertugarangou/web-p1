@@ -67,7 +67,7 @@ document.querySelector("#trashButton").addEventListener("click", async event => 
     checkedAll = true;
 });
 
-
+//falta acutalitzar el local storage
 document.querySelector("#tickButton").addEventListener("click", async event => {
     var todos = await getTodos();
     for(var i = todos.length -1; i >= 0; i--){
@@ -75,19 +75,17 @@ document.querySelector("#tickButton").addEventListener("click", async event => {
         const element = document.querySelector(`#todo-${todo.id}`);
         if(element.querySelector(".checkbox").checked){
             if(element.querySelector(".taskRectangle").getAttribute("completed") == "false"){
-                element.querySelector(".taskRectangle").setAttribute("completed", "true");
+                todo.completed = true;
             }else{
-                element.querySelector(".taskRectangle").setAttribute("completed", "false");
+                todo.completed = false;
             }
-            //element OK per fer replace
 
-            //element OK per fer replace
         }
     }
     localStorage.setItem("todos", JSON.stringify(todos));
     document.querySelector(".tasklist").innerHTML = "";
     await carregarTodos();
-    await calcularDuties();
+    await calcularUrgents();
     checkedAll = true;
 });
 
