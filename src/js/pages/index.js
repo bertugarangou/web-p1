@@ -123,10 +123,10 @@ async function carregarTodos(){
         const { id, titol, descripcio, deadline, categoria, imatge, completed } = todo;
 
         const nouElement = `<div class="task" id="todo-${id}">
-        <div class="taskSquare">
+        <div class="taskSquare ${completed}">
             <input type="checkbox" class="checkbox">
         </div>
-        <div class="taskRectangle">
+        <div class="taskRectangle ${completed}">
             <div class="container1">
                 <img src="${imatge}" alt="Board with paper. Website logo." id="webLogo"
                 height="47" width="47">
