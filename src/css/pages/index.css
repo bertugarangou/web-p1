@@ -359,7 +359,7 @@ button.selectAll {
 }
 
 .taskSquare:hover {
-    background-color: #AAA1C8;
+    background-color: #C6C6C6;
 }
 
 .checkbox {
@@ -381,6 +381,13 @@ button.selectAll {
 
 .taskRectangle:hover {
     background-color: #C6C6C6;
+}
+
+.taskRectangle .done{
+	background: rgba(170, 161, 200, 0.25);
+}
+.taskSquare .active{
+	background: rgba(170, 161, 200, 1);;
 }
 
 .container1 {
