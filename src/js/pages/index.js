@@ -61,7 +61,6 @@ document.querySelector("#trashButton").addEventListener("click", async event => 
 
     localStorage.setItem("todos", JSON.stringify(todos));
     
-    document.querySelector(".tasklist").innerHTML = "";
     await carregarTodos();
     await calcularDuties();
     checkedAll = true;
@@ -83,7 +82,6 @@ document.querySelector("#tickButton").addEventListener("click", async event => {
         }
     }
     localStorage.setItem("todos", JSON.stringify(todos));
-    document.querySelector(".tasklist").innerHTML = "";
     await carregarTodos();
     await calcularUrgents();
     checkedAll = true;
@@ -108,6 +106,10 @@ document.addEventListener("DOMContentLoaded", async event => {
     await calcularDuties();
     await calcularUrgents();
 
+});
+
+window.addEventListener("resize", async event =>{
+    await carregarTodos();
 });
 
 async function getTodos(){
@@ -147,10 +149,23 @@ async function calcularUrgents(){
 }
 
 async function carregarTodos(){
+    document.querySelector(".tasklist").innerHTML = "";
+
     var todos = await getTodos();
     const llista = document.querySelector(".tasklist");
 
+
     todos.forEach(todo => {
+        var size = Math.floor(document.querySelector("body").clientWidth*0.065 - 35);
+        if(todo.descripcio.length > size){
+             todo.descripcio = todo.descripcio.slice(0,size) + "...";
+        }
+
+        var size2 = Math.floor(document.querySelector("body").clientWidth*0.025);
+        console.log(size2)
+        if(todo.titol.length > size2){
+            todo.titol = todo.titol.slice(0,size2) + "...";
+        }
         const { id, titol, descripcio, deadline, categoria, imatge, completed } = todo;
 
         const nouElement = `<div class="task" id="todo-${id}">
