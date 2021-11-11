@@ -67,7 +67,7 @@ document.querySelector("#trashButton").addEventListener("click", async event => 
     checkedAll = true;
 });
 
-//falta acutalitzar el local storage
+
 document.querySelector("#tickButton").addEventListener("click", async event => {
     var todos = await getTodos();
     for(var i = todos.length -1; i >= 0; i--){
