@@ -129,13 +129,12 @@ async function calcularDuties(){
     dutiesHTML.innerHTML = `<p class="duties">${duties} duties</p>`;
 }
 
-async function calcularUrgents(){/*Només calcula, no actualita el text a la tasca de moment*/
+async function calcularUrgents(){
     var tasks = await getTodos();
     var numberOfUrgents = 0;
     tasks.forEach(task => {
         if(Date.now() - task.id  > 604800000){//604800000 = one week
             
-            //TODO: marcar tasca urgent
 
             const urgentText = document.querySelector(`#todo-${task.id} .urgentState`);
             urgentText.innerHTML = `<p>Urgent!</p>`;
