@@ -6,6 +6,7 @@ document.querySelector(".selectAll").addEventListener("click", event => {
     });
     checkedAll = !checkedAll;
     actualitzarTrashButton()
+    actualitzarTickButton();
 });
 
 function actualitzarTrashButton(){
@@ -22,13 +23,29 @@ function actualitzarTrashButton(){
         document.querySelector("#trashButton").setAttribute("disabled", "true");
 }
 
+function actualitzarTickButton(){
+    var algun = false;
+    document.querySelectorAll(".checkbox").forEach(element => {
+        if(element.checked){
+            algun = true;
+        }
+    });
+
+    if(algun)
+        document.querySelector("#tickButton").removeAttribute("disabled");
+    else
+        document.querySelector("#tickButton").setAttribute("disabled", "true");
+}
+
 function afegirCheckbox(){
     document.querySelectorAll(".checkbox").forEach(element => {
         element.addEventListener("change", event => {
             actualitzarTrashButton();
+            actualitzarTickButton();
         });
     });
     actualitzarTrashButton();
+    actualitzarTickButton();
 }
 
 document.querySelector("#trashButton").addEventListener("click", async event => {
@@ -47,6 +64,31 @@ document.querySelector("#trashButton").addEventListener("click", async event => 
     document.querySelector(".tasklist").innerHTML = "";
     await carregarTodos();
     await calcularDuties();
+    checkedAll = true;
+});
+
+
+document.querySelector("#tickButton").addEventListener("click", async event => {
+    var todos = await getTodos();
+    for(var i = todos.length -1; i >= 0; i--){
+        var todo = todos[i];
+        const element = document.querySelector(`#todo-${todo.id}`);
+        if(element.querySelector(".checkbox").checked){
+            if(element.querySelector(".taskRectangle").getAttribute("completed") == "false"){
+                element.querySelector(".taskRectangle").setAttribute("completed", "true");
+            }else{
+                element.querySelector(".taskRectangle").setAttribute("completed", "false");
+            }
+            //element OK per fer replace
+
+            //element OK per fer replace
+        }
+    }
+    localStorage.setItem("todos", JSON.stringify(todos));
+    document.querySelector(".tasklist").innerHTML = "";
+    await carregarTodos();
+    await calcularDuties();
+    checkedAll = true;
 });
 
 document.querySelector(".add-task-button").addEventListener("click", event => {
@@ -77,15 +119,7 @@ async function getTodos(){
     }
     return await JSON.parse(raw);
     
-/*
 
-var milliseconds = task.id * 1000;
-
-var dateObject = new Date(milliseconds);
-var humanDateFormat = dateObject.toLocaleString();
-
-Math.abs(Date.now - humanDateFormat);
-*/
 }
 
 
@@ -123,10 +157,10 @@ async function carregarTodos(){
         const { id, titol, descripcio, deadline, categoria, imatge, completed } = todo;
 
         const nouElement = `<div class="task" id="todo-${id}">
-        <div class="taskSquare ${completed}">
+        <div class="taskSquare" completed="${completed}">
             <input type="checkbox" class="checkbox">
         </div>
-        <div class="taskRectangle ${completed}">
+        <div class="taskRectangle" completed="${completed}">
             <div class="container1">
                 <img src="${imatge}" alt="Board with paper. Website logo." id="webLogo"
                 height="47" width="47">
