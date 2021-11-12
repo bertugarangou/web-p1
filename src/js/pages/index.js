@@ -1,5 +1,6 @@
 var checkedAll = true;
 var allDuties = true;
+var todosActuals;
 
 document.querySelector(".selectAll").addEventListener("click", event => {
     document.querySelectorAll(".checkbox").forEach(element => {
@@ -49,14 +50,16 @@ function afegirCheckbox(){
     actualitzarTickButton();
 }
 
+//revisar que sols miri els actuals i borri els totals (si? sembla que ja funciona)
 document.querySelector("#trashButton").addEventListener("click", async event => {
     var todos = await getTodos();
-    for (var i = todos.length - 1; i >= 0; i--){
-        const todo = todos[i];
+    
+    for (var i = todosActuals.length - 1; i >= 0; i--){
+        const todo = todosActuals[i];
 
         const element = document.querySelector(`#todo-${todo.id}`);
         if(element.querySelector(".checkbox").checked){
-            todos.splice(i, 1);
+            todos.splice(todos.indexOf(todo), 1);//index de l'array actual A l'array total
         }
     }
 
@@ -65,13 +68,14 @@ document.querySelector("#trashButton").addEventListener("click", async event => 
     await carregarTodos();
     await calcularDuties();
     checkedAll = true;
+    console.log(todos)
 });
 
 
 document.querySelector("#tickButton").addEventListener("click", async event => {
-    var todos = await getTodos();
-    for(var i = todos.length -1; i >= 0; i--){
-        var todo = todos[i];
+
+    for(var i = todosActuals.length -1; i >= 0; i--){
+        var todo = todosActuals[i];
         const element = document.querySelector(`#todo-${todo.id}`);
         if(element.querySelector(".checkbox").checked){
             if(element.querySelector(".taskRectangle").getAttribute("completed") == "false"){
@@ -82,9 +86,8 @@ document.querySelector("#tickButton").addEventListener("click", async event => {
 
         }
     }
-    localStorage.setItem("todos", JSON.stringify(todos));
+    localStorage.setItem("todos", JSON.stringify(todosActuals));
     await carregarTodos();
-    await calcularUrgents();
     checkedAll = true;
 });
 
@@ -105,7 +108,7 @@ document.querySelector(".add-task-button").addEventListener("click", event => {
 document.addEventListener("DOMContentLoaded", async event => {
     await carregarTodos();
     await calcularDuties();
-    await calcularUrgents();
+    await calcularUrgents(await getTodos());
 
 });
 
@@ -130,11 +133,11 @@ async function calcularDuties(){
     dutiesHTML.innerHTML = `<p class="duties">${duties} duties</p>`;
 }
 
-async function calcularUrgents(){
-    var tasks = await getTodos();
+async function calcularUrgents(tasks){
+    //var tasks = await getTodos();
     var numberOfUrgents = 0;
     tasks.forEach(task => {
-        if(Date.now() - task.id  > 3600000 && task.completed == false){//604800000 = one week //////////////////////canviaaaaaaaaaa'm
+        if(Date.now() - task.id  > 604800000 && task.completed == false){//604800000 = one week //////////////////////canviaaaaaaaaaa'm
             
 
             const urgentText = document.querySelector(`#todo-${task.id} .urgentState`);
@@ -150,41 +153,69 @@ async function calcularUrgents(){
 }
 
 
-
-
-
-document.querySelector("#today").addEventListener("click", event =>{
-    
-    if(allDuties != false){
-        console.log("click today")
-
-
-        allDuties = false;
-    }
+document.querySelector("#today").addEventListener("click", event => {
+    allDuties = false;
+    carregarTodos();
 });
 
 document.querySelector("#allDuties").addEventListener("click", event =>{
-    
-    if(allDuties != true){
-        console.log("click all duties")
-
-
-        allDuties = true;
-    }
+    allDuties = true;
+    carregarTodos();
 });
 
 
+function ordenarPerToday(todos){
+    
+    var today = new Date(Date.now());
+    today = today.getFullYear() + "-" + (1 + parseInt(today.getMonth())) + "-" + today.getDate();
 
 
+    todos.forEach(todo =>{ 
+        console.log("tractant el todo '" + todo.titol + "'")
+        if(today.localeCompare(todo.deadline) != 0){
+            console.log("eliminat el titol '" + todo.titol + "'")
+            todos.splice(todos.indexOf(todo), 1)
+        }
+    })
+
+    ordenarPerData(todos);
+}
+
+function ordenarPerData(todos){
+
+
+    todos.sort(
+        function (a, b) {
+            if(b.completed == true && a.completed == false){
+                return -1;
+            }else if(b.completed == false && a.completed == true){
+                return 1;
+            }else{
+                return b.id - a.id;//canviar ID per DATE (i potser traduir la date a timestamp/epoch si fa falta) si s'ha dordenar diferent
+            }
+        }
+    );
+
+    //localStorage.setItem("todos", JSON.stringify(todos)); //deixar comentat sempre i quan no falli res d'ordres
+
+}
 
 async function carregarTodos(){
+    console.log("todos abans d'ordenar: ")
+    console.log(todos);
     document.querySelector(".tasklist").innerHTML = "";
+    const llista = document.querySelector(".tasklist");
+    checkedAll = true;
 
     var todos = await getTodos();
-    const llista = document.querySelector(".tasklist");
+    if(allDuties == true){
+        ordenarPerData(todos);
+    }else{
+        ordenarPerToday(todos);
+    }
+    await console.log(todos)
 
-
-    todos.forEach(todo => {
+    await todos.forEach(todo => {
         //correcció width
         var size = Math.floor(document.querySelector("body").clientWidth*0.05 - 35);
         if(todo.descripcio.length > size){
@@ -238,5 +269,7 @@ async function carregarTodos(){
 
         llista.innerHTML += nouElement;
     });
+    todosActuals = todos;
     afegirCheckbox();
+    calcularUrgents(todosActuals)
 }
