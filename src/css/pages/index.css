@@ -33,6 +33,7 @@ main {
 .space-empty{
 	grid-area: space;
 	height: 100%;
+	width: 100%;
 }
 
 .menu {

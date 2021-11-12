@@ -156,12 +156,12 @@ async function carregarTodos(){
 
 
     todos.forEach(todo => {
-        var size = Math.floor(document.querySelector("body").clientWidth*0.065 - 35);
+        var size = Math.floor(document.querySelector("body").clientWidth*0.05 - 35);
         if(todo.descripcio.length > size){
              todo.descripcio = todo.descripcio.slice(0,size) + "...";
         }
 
-        var size2 = Math.floor(document.querySelector("body").clientWidth*0.025);
+        var size2 = Math.floor(document.querySelector("body").clientWidth*0.015);
         console.log(size2)
         if(todo.titol.length > size2){
             todo.titol = todo.titol.slice(0,size2) + "...";
