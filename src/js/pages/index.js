@@ -1,4 +1,5 @@
 var checkedAll = true;
+var allDuties = true;
 
 document.querySelector(".selectAll").addEventListener("click", event => {
     document.querySelectorAll(".checkbox").forEach(element => {
@@ -133,7 +134,7 @@ async function calcularUrgents(){
     var tasks = await getTodos();
     var numberOfUrgents = 0;
     tasks.forEach(task => {
-        if(Date.now() - task.id  > 604800000){//604800000 = one week
+        if(Date.now() - task.id  > 3600000 && task.completed == false){//604800000 = one week //////////////////////canviaaaaaaaaaa'm
             
 
             const urgentText = document.querySelector(`#todo-${task.id} .urgentState`);
@@ -148,6 +149,34 @@ async function calcularUrgents(){
     numberOfUrgents = 0;
 }
 
+
+
+
+
+document.querySelector("#today").addEventListener("click", event =>{
+    
+    if(allDuties != false){
+        console.log("click today")
+
+
+        allDuties = false;
+    }
+});
+
+document.querySelector("#allDuties").addEventListener("click", event =>{
+    
+    if(allDuties != true){
+        console.log("click all duties")
+
+
+        allDuties = true;
+    }
+});
+
+
+
+
+
 async function carregarTodos(){
     document.querySelector(".tasklist").innerHTML = "";
 
@@ -156,16 +185,18 @@ async function carregarTodos(){
 
 
     todos.forEach(todo => {
+        //correcció width
         var size = Math.floor(document.querySelector("body").clientWidth*0.05 - 35);
         if(todo.descripcio.length > size){
              todo.descripcio = todo.descripcio.slice(0,size) + "...";
         }
 
         var size2 = Math.floor(document.querySelector("body").clientWidth*0.015);
-        console.log(size2)
         if(todo.titol.length > size2){
             todo.titol = todo.titol.slice(0,size2) + "...";
         }
+
+        //creació tasks
         const { id, titol, descripcio, deadline, categoria, imatge, completed } = todo;
 
         const nouElement = `<div class="task" id="todo-${id}">
