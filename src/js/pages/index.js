@@ -72,9 +72,10 @@ document.querySelector("#trashButton").addEventListener("click", async event => 
 
 
 document.querySelector("#tickButton").addEventListener("click", async event => {
+    var todos = await getTodos();
 
-    for(var i = todosActuals.length -1; i >= 0; i--){
-        var todo = todosActuals[i];
+    for(var i = todos.length -1; i >= 0; i--){
+        var todo = todos[i];
         const element = document.querySelector(`#todo-${todo.id}`);
         if(element.querySelector(".checkbox").checked){
             if(element.querySelector(".taskRectangle").getAttribute("completed") == "false"){
@@ -85,7 +86,7 @@ document.querySelector("#tickButton").addEventListener("click", async event => {
 
         }
     }
-    localStorage.setItem("todos", JSON.stringify(todosActuals));
+    localStorage.setItem("todos", JSON.stringify(todos));
     await carregarTodos();
     checkedAll = true;
 });
@@ -107,7 +108,7 @@ document.querySelector(".add-task-button").addEventListener("click", event => {
 document.addEventListener("DOMContentLoaded", async event => {
     await carregarTodos();
     await calcularDuties();
-    await calcularUrgents(await getTodos());
+    await calcularUrgents();
 
 });
 
@@ -132,8 +133,8 @@ async function calcularDuties(){
     dutiesHTML.innerHTML = `<p class="duties">${duties} duties</p>`;
 }
 
-async function calcularUrgents(tasks){
-    //var tasks = await getTodos();
+async function calcularUrgents(){
+    var tasks = await getTodos();
     var numberOfUrgents = 0;
     tasks.forEach(task => {
         if(Date.now() - task.id  > 604800000 && task.completed == false){//604800000 = one week //////////////////////canviaaaaaaaaaa'm
@@ -257,7 +258,6 @@ async function carregarTodos(){
 
         llista.innerHTML += nouElement;
     });
-    todosActuals = todos;
     afegirCheckbox();
-    calcularUrgents(todosActuals)
+    calcularUrgents()
 }
