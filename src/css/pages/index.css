@@ -74,7 +74,7 @@ main {
 }
 
 .asideViewButtonText {
-	margin-left: 15px;
+	margin-left: 16px;
 }
 
 .asideViewButtonImg {
@@ -218,36 +218,52 @@ button.selectAll {
 	color: white;
 }
 
-#today:active {
+#today[active="true"] {
 	color: #6247AA;
+
 }
 
-#today:active .asideViewButtonImg {
+
+#today[active="true"] .asideViewButtonImg {
 	fill: #6247AA;
+
 }
 
 #today:hover {
 	color: #6247AA;
+
 }
 
 #today:hover .asideViewButtonImg {
 	fill: #6247AA;
+
 }
 
-#allDuties:active {
+#allDuties[active="true"] {
 	color: #6247AA;
+
+	
 }
 
-#allDuties:active .asideViewButtonImg{
+#allDuties[active="true"] .asideViewButtonImg{
 	fill: #6247AA;
+
 }
 
 #allDuties:hover {
 	color: #6247AA;
+
 }
 
 #allDuties:hover .asideViewButtonImg {
 	fill: #6247AA;
+
+}
+#allDuties{
+	font-size: 18px;
+}
+#today{
+	font-size: 18px;
 }
 
 .btnTickTrash {
@@ -278,6 +294,9 @@ button.selectAll {
     display: flex;
     gap: 8px;
 	margin-left: 15px;
+}
+#categoriesText{
+	font-size: 18px;
 }
 
 .rectangle {
