@@ -56,7 +56,6 @@ function afegirCheckbox(){
 document.querySelector("#trashButton").addEventListener("click", async event => {
     const main = document.querySelector('main');
     var todos;
-    var todosTots = todosTotals.slice();
     if(todosVisibles == null){
         todos = await getTodos();
     }else{
