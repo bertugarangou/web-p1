@@ -1,6 +1,6 @@
 var checkedAll = true;
 var allDuties = true;
-var todosActuals;
+
 
 document.querySelector(".selectAll").addEventListener("click", event => {
     document.querySelectorAll(".checkbox").forEach(element => {
@@ -50,16 +50,16 @@ function afegirCheckbox(){
     actualitzarTickButton();
 }
 
-//revisar que sols miri els actuals i borri els totals (si? sembla que ja funciona)
+
 document.querySelector("#trashButton").addEventListener("click", async event => {
     var todos = await getTodos();
     
-    for (var i = todosActuals.length - 1; i >= 0; i--){
-        const todo = todosActuals[i];
+    for (var i = todos.length - 1; i >= 0; i--){
+        const todo = todos[i];
 
         const element = document.querySelector(`#todo-${todo.id}`);
         if(element.querySelector(".checkbox").checked){
-            todos.splice(todos.indexOf(todo), 1);//index de l'array actual A l'array total
+            todos.splice(todos.indexOf(todo), 1);
         }
     }
 
@@ -68,7 +68,6 @@ document.querySelector("#trashButton").addEventListener("click", async event => 
     await carregarTodos();
     await calcularDuties();
     checkedAll = true;
-    console.log(todos)
 });
 
 
@@ -165,20 +164,7 @@ document.querySelector("#allDuties").addEventListener("click", event =>{
 
 
 function ordenarPerToday(todos){
-    
-    var today = new Date(Date.now());
-    today = today.getFullYear() + "-" + (1 + parseInt(today.getMonth())) + "-" + today.getDate();
 
-
-    todos.forEach(todo =>{ 
-        console.log("tractant el todo '" + todo.titol + "'")
-        if(today.localeCompare(todo.deadline) != 0){
-            console.log("eliminat el titol '" + todo.titol + "'")
-            todos.splice(todos.indexOf(todo), 1)
-        }
-    })
-
-    ordenarPerData(todos);
 }
 
 function ordenarPerData(todos){
@@ -201,8 +187,7 @@ function ordenarPerData(todos){
 }
 
 async function carregarTodos(){
-    console.log("todos abans d'ordenar: ")
-    console.log(todos);
+
     document.querySelector(".tasklist").innerHTML = "";
     const llista = document.querySelector(".tasklist");
     checkedAll = true;
@@ -213,7 +198,10 @@ async function carregarTodos(){
     }else{
         ordenarPerToday(todos);
     }
-    await console.log(todos)
+
+
+
+
 
     await todos.forEach(todo => {
         //correcció width
