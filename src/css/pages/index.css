@@ -378,8 +378,6 @@ button.selectAll {
     gap: 8px;
 }
 
-
-
 .taskSquare:hover {
     background-color: #C6C6C6;
 }
@@ -508,8 +506,8 @@ button.selectAll {
 	font-weight: bold;
 }
 
-.vanish .task {
-	animation: 2s taskVanish;
+.vanish .task[borrar="true"] {
+	animation: 0.5s taskVanish;
 	animation-fill-mode: forwards;
 }
 

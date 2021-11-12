@@ -53,34 +53,37 @@ function afegirCheckbox(){
 }
 
 
-document.querySelector("#trashButton").addEventListener("click", async event => {
+document.querySelector("#trashButton").addEventListener("click",  event => {
     const main = document.querySelector('main');
     var todos;
     if(todosVisibles == null){
-        todos = await getTodos();
+        todos = getTodos();
     }else{
         todos = todosVisibles.slice();
     }
     var copia = todos.slice();
-
-    //tinc 2 arrays amb el mateix, copia (fixe) i todos(canvio)
 
     for (var i = copia.length - 1; i >= 0; i--){
         const todo = copia[i];
 
         const element = document.querySelector(`#todo-${todo.id}`);
         if(element.querySelector(".checkbox").checked){
+            document.querySelector(`#todo-${todo.id}`).setAttribute("borrar", "true");
+            
+            main.classList.add('vanish');
+            
             todosTotals.splice(todosTotals.indexOf(todo), 1);
-            
-            
-            //main.todo.id.add('vanish');
+                       
         }
     }
-
+    
     localStorage.setItem("todos", JSON.stringify(todosTotals));
     
-    await carregarTodos();
-    await calcularDuties();
+    setTimeout(function(){
+        carregarTodos();
+        calcularDuties();
+    }, 500)
+    
     checkedAll = true;
 });
 
@@ -105,11 +108,8 @@ document.querySelector("#tickButton").addEventListener("click", async event => {
             }else{
                 todo.completed = false;
             }
-
         }
     }
-
-
 
     localStorage.setItem("todos", JSON.stringify(todosTotals));
     await carregarTodos();
@@ -148,7 +148,6 @@ async function getTodos(){
     }
     return await JSON.parse(raw);
     
-
 }
 
 async function calcularDuties(){
@@ -161,7 +160,7 @@ async function calcularUrgents(){
     var tasks = await getTodos();
     var numberOfUrgents = 0;
     tasks.forEach(task => {
-        if(Date.now() - task.id  > 604800000 && task.completed == false){//604800000 = one week //////////////////////canviaaaaaaaaaa'm
+        if(Date.now() - task.id  > 604800000 && task.completed == false){ //604800000 = one week
             
 
             const urgentText = document.querySelector(`#todo-${task.id} .urgentState`);
@@ -170,12 +169,10 @@ async function calcularUrgents(){
         }
     });
 
-
     const urgentDuty = document.querySelector(".urgents");
     urgentDuty.innerHTML = `<p class="urgents">${numberOfUrgents} urgent</p>`
     numberOfUrgents = 0;
 }
-
 
 document.querySelector("#today").addEventListener("click", event => {
     allDuties = false;
@@ -199,9 +196,7 @@ document.querySelector("#allDuties").addEventListener("click", event =>{
     carregarTodos();
 });
 
-
 function ordenarPerToday(todos){
-
 
     var today = new Date(Date.now());
     today = today.getFullYear() + "-" + parseInt(1 + today.getMonth()) + "-" + today.getDate();
@@ -263,7 +258,7 @@ async function carregarTodos(){
         //creació tasks
         const { id, titol, descripcio, deadline, categoria, imatge, completed } = todo;
 
-        const nouElement = `<div class="task" id="todo-${id}">
+        const nouElement = `<div class="task" id="todo-${id}" borrar="false">
         <div class="taskSquare" completed="${completed}">
             <input type="checkbox" class="checkbox">
         </div>
