@@ -1,7 +1,8 @@
 var checkedAll = true;
 var allDuties = true;
 
-var todosVisibles;
+var todosVisibles = null;
+var todosTotals;
 
 document.querySelector(".selectAll").addEventListener("click", event => {
     document.querySelectorAll(".checkbox").forEach(element => {
@@ -53,18 +54,31 @@ function afegirCheckbox(){
 
 
 document.querySelector("#trashButton").addEventListener("click", async event => {
-    var todos = await getTodos();
-    
-    for (var i = todos.length - 1; i >= 0; i--){
-        const todo = todos[i];
+    const main = document.querySelector('main');
+    var todos;
+    var todosTots = todosTotals.slice();
+    if(todosVisibles == null){
+        todos = await getTodos();
+    }else{
+        todos = todosVisibles.slice();
+    }
+    var copia = todos.slice();
+
+    //tinc 2 arrays amb el mateix, copia (fixe) i todos(canvio)
+
+    for (var i = copia.length - 1; i >= 0; i--){
+        const todo = copia[i];
 
         const element = document.querySelector(`#todo-${todo.id}`);
         if(element.querySelector(".checkbox").checked){
-            todos.splice(todos.indexOf(todo), 1);
+            todosTotals.splice(todosTotals.indexOf(todo), 1);
+            
+            
+            //main.todo.id.add('vanish');
         }
     }
 
-    localStorage.setItem("todos", JSON.stringify(todos));
+    localStorage.setItem("todos", JSON.stringify(todosTotals));
     
     await carregarTodos();
     await calcularDuties();
@@ -72,8 +86,16 @@ document.querySelector("#trashButton").addEventListener("click", async event => 
 });
 
 
-document.querySelector("#tickButton").addEventListener("click", async event => {
-    var todos = await getTodos();
+document.querySelector("#tickButton").addEventListener("click", async event => {//no em toqueu que funciono sense saber com ;-;
+    var todos;
+    if(todosVisibles == null){
+        todos = await getTodos();
+        console.log("1r")
+
+    }else{
+        todos = todosVisibles.slice();
+        console.log("2ns")
+    }
 
     for(var i = todos.length -1; i >= 0; i--){
         var todo = todos[i];
@@ -87,7 +109,10 @@ document.querySelector("#tickButton").addEventListener("click", async event => {
 
         }
     }
-    localStorage.setItem("todos", JSON.stringify(todos));
+
+
+
+    localStorage.setItem("todos", JSON.stringify(todosTotals));
     await carregarTodos();
     checkedAll = true;
 });
@@ -126,7 +151,6 @@ async function getTodos(){
     
 
 }
-
 
 async function calcularDuties(){
     const duties = JSON.parse(localStorage.todos).length;
@@ -214,6 +238,8 @@ async function carregarTodos(){
     checkedAll = true;
 
     var todos = await getTodos();
+    todosTotals = todos.slice();
+
     if(allDuties == true){
         ordenarPerData(todos);
     }else{
@@ -221,10 +247,8 @@ async function carregarTodos(){
         ordenarPerToday(todos);
     }
 
+    todosVisibles = todos.slice();  //copia els visibles
 
-
-
-    todosVisibles = todos;
     await todos.forEach(todo => {
         //correcció width
         var size = Math.floor(document.querySelector("body").clientWidth*0.05 - 35);

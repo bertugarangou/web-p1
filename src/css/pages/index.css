@@ -50,7 +50,18 @@ main {
 	display: flex;
 	margin-bottom: 50px;
 }
+#webLogo:hover{
+	animation: rueda 2s infinite;
+}
 
+@keyframes rueda {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
 .topInfoText {
 	font-size: 13px;
 	color: #808080;
@@ -365,19 +376,8 @@ button.selectAll {
 	margin-top: 44px;
     display: flex;
     gap: 8px;
+}
 
-	
-}
-.task:hover{
-	animation: bote 2s alternate infinite ease-in;
-}
-@keyframes bote {
-	0%{
-		transform: translateX(-180);
-	}100%{
-		transform: translateX(0);
-	}
-}
 
 
 .taskSquare:hover {
@@ -508,18 +508,20 @@ button.selectAll {
 	font-weight: bold;
 }
 
+.vanish .task {
+	animation: 2s taskVanish;
+	animation-fill-mode: forwards;
+}
+
 @keyframes taskVanish {
 	0% {
 	  opacity: 1;
-	  transform: rotateX(90deg);
 	}
 	50% {
 	  opacity: 0.5;
-	  transform: rotateX(0deg);
 	}
 	100% {
 	  display: none;
 	  opacity: 0;
-	  transform: rotateX(90deg);
 	}
   }
