@@ -365,6 +365,18 @@ button.selectAll {
 	margin-top: 44px;
     display: flex;
     gap: 8px;
+
+	
+}
+.task:hover{
+	animation: bote 2s alternate infinite ease-in;
+}
+@keyframes bote {
+	0%{
+		transform: translateX(-180);
+	}100%{
+		transform: translateX(0);
+	}
 }
 
 
@@ -408,9 +420,6 @@ button.selectAll {
 .taskRectangle:hover , .taskSquare:hover {
     background-color: #C6C6C6;
 }
-
-
-
 
 .container1 {
     width: 105px;
@@ -489,6 +498,7 @@ button.selectAll {
     font-family: Roboto;
     font-size: 12px;
 }
+
 .urgentState{
 	color: #6247AA;
 	display: flex;
@@ -497,3 +507,19 @@ button.selectAll {
 	font-size: 14;
 	font-weight: bold;
 }
+
+@keyframes taskVanish {
+	0% {
+	  opacity: 1;
+	  transform: rotateX(90deg);
+	}
+	50% {
+	  opacity: 0.5;
+	  transform: rotateX(0deg);
+	}
+	100% {
+	  display: none;
+	  opacity: 0;
+	  transform: rotateX(90deg);
+	}
+  }

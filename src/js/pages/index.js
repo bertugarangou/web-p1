@@ -1,6 +1,7 @@
 var checkedAll = true;
 var allDuties = true;
 
+var todosVisibles;
 
 document.querySelector(".selectAll").addEventListener("click", event => {
     document.querySelectorAll(".checkbox").forEach(element => {
@@ -178,11 +179,20 @@ document.querySelector("#allDuties").addEventListener("click", event =>{
 
 function ordenarPerToday(todos){
 
+
+    var today = new Date(Date.now());
+    today = today.getFullYear() + "-" + parseInt(1 + today.getMonth()) + "-" + today.getDate();
+
+    var copia = todos.slice();
+
+    copia.forEach(todo =>{
+        if(todo.deadline.localeCompare(today) != 0){
+            todos.splice(todos.indexOf(todo), 1);
+        }
+    })
 }
 
 function ordenarPerData(todos){
-
-
     todos.sort(
         function (a, b) {
             if(b.completed == true && a.completed == false){
@@ -194,9 +204,7 @@ function ordenarPerData(todos){
             }
         }
     );
-
     //localStorage.setItem("todos", JSON.stringify(todos)); //deixar comentat sempre i quan no falli res d'ordres
-
 }
 
 async function carregarTodos(){
@@ -209,13 +217,14 @@ async function carregarTodos(){
     if(allDuties == true){
         ordenarPerData(todos);
     }else{
+        ordenarPerData(todos);
         ordenarPerToday(todos);
     }
 
 
 
 
-
+    todosVisibles = todos;
     await todos.forEach(todo => {
         //correcció width
         var size = Math.floor(document.querySelector("body").clientWidth*0.05 - 35);
