@@ -141,16 +141,16 @@ main {
 	flex-direction: column;
 }
 
-.data-input-2:active {
-	color: #6247AA;
-}
-
-.data-input-2:hover {
-	color: #6247AA;
-}
-
 .categoryLabel {
 	font-size: 24px;
+}
+
+.categoryLabel:hover {
+	color: #6247AA;
+}
+
+.categoryLabel:active {
+	color: #6247AA;
 }
 
 .rectCategories {

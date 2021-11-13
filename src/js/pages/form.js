@@ -54,3 +54,23 @@ document.querySelector("#acceptBtn").addEventListener("click", async event => {
     }
     event.preventDefault();
 });
+
+document.querySelector('.select-wrapper').addEventListener('click', function() {
+    
+    this.querySelector('.select').classList.toggle('open');
+    /*Cambiar color por uno selecionado */
+    for (const option of document.querySelectorAll(".custom-option")) {
+        option.addEventListener('click', function() {
+            if (!this.classList.contains('selected')) {
+                
+                this.parentNode.querySelector('.custom-option.selected').classList.remove('selected');
+                
+                this.classList.add('selected');     
+
+                console.log();
+                
+                this.closest('.select').querySelector('.select__trigger svg').innerHTML = `width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><rect class = "rectSVG" width="19" height="19" rx="5" fill="${option.querySelector(".rectSVG").getAttribute("fill")}"/>`;
+            }
+        })
+    }
+})
