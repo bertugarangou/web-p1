@@ -20,23 +20,22 @@ document.querySelector(".selectAll").addEventListener("click", event => {
 document.querySelector('.select-wrapper').addEventListener('click', function() {
     
     this.querySelector('.select').classList.toggle('open');
+    /*Cambiar color por uno selecionado */
+    for (const option of document.querySelectorAll(".custom-option")) {
+        option.addEventListener('click', function() {
+            if (!this.classList.contains('selected')) {
+                
+                this.parentNode.querySelector('.custom-option.selected').classList.remove('selected');
+                
+                this.classList.add('selected');     
 
+                console.log();
+                
+                this.closest('.select').querySelector('.select__trigger svg').innerHTML = `width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><rect class = "rectSVG" width="19" height="19" rx="5" fill="${option.querySelector(".rectSVG").getAttribute("fill")}"/>`;
+            }
+        })
+    }
 })
-
-/*Cambiar color por uno selecionado */
-for (const option of document.querySelectorAll(".custom-option")) {
-    option.addEventListener('click', function() {
-        if (!this.classList.contains('selected')) {
-            
-            this.parentNode.querySelector('.custom-option.selected').classList.remove('selected');
-            
-            this.classList.add('selected');     
-            console.log(option.);
-            
-            this.closest('.select').querySelector('.select__trigger svg').innerHTML = `width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><rect class = "rectSVG" width="19" height="19" rx="5" fill="#01ff42"/>`;
-        }
-    })
-}
 
 function actualitzarTrashButton(){
     var algun = false;
@@ -264,7 +263,6 @@ function filterFunction(){  //Function inspired by W3S. Credit to its authors.
         //obtenir descr
         a = li[i].getElementsByClassName("taskDescription")[0];
         txtValue2 = a.textContent || a.innerText;
-        console.log(txtValue2)
 
         //obtenir category
 

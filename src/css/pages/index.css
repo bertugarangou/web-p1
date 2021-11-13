@@ -303,67 +303,42 @@ button.selectAll {
 
 .selectCategory {
     display: flex;
-    gap: 8px;
-	margin-left: 15px;
+    gap : 8px;
+	margin-left: 20px;
+
 }
 #categoriesText{
 	font-size: 18px;
 }
-/*
-.rectangle {
-    width: 66px;
-    height: 34px;
-    background: #dcdbe0;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.square1 {
-    width: 34px;
-    height: 34px;
-    border-radius: 5px;
-    background: #c1bfc1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.square1:hover {
-    background: #a5a5a5;
-}
-*/
-/**************LISTA DE CATEGORIAS DESPLEGABLE COLORES**********************/
 .select-wrapper {
 	position: relative;
 	user-select: none;
 	width: 100%;
+	
 }
 
 .squareArrow {
     width: 34px;
     height: 34px;
     border-radius: 5px;
-    background: #c1bfc1;
-	
+
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .squareArrow:hover {
-    background: #a5a5a5;
+    background: rgba(170, 161, 200, 0.50);
 }
 .select__trigger {
 
 	width: 66px;
     height: 34px;
-    background: #dcdbe0;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 	padding-left: 10px;
+	background: rgba(170, 161, 200, 0.25);
 }
 .custom-options {
 	position: absolute;
@@ -372,13 +347,25 @@ button.selectAll {
 	left: 0;
 	right: 0;
 	border-top: 0;
-	background: #fff;
-	transition: all 0.5s;
-	opacity: 0;
+	opacity: 25%;
+	transition: all .5s;
 	visibility: hidden;
 	pointer-events: none;
 	z-index: 2;
 }
+
+.custom-options{
+	background: #eae7f1
+}
+.custom-options:last-child{
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+
+	
+}
+
+
+
 .select.open .custom-options {
 	opacity: 1;
 	visibility: visible;
@@ -395,56 +382,26 @@ button.selectAll {
 	cursor: pointer;
 	transition: all 0.5s;
 }
-.custom-option:hover {
-	cursor: pointer;
-	background-color: #b2b2b2;
-}
-.custom-option.selected {
-	color: #ffffff;
-	background-color: #305c91;
-}
-/*
+
+
+
 .arrow {
 	position: relative;
 	height: 15px;
 	width: 15px;
 }
-.arrow::before, .arrow::after {
-	content: "";
-	position: absolute;
-	bottom: 0px;
-	width: 0.15rem;
-	height: 100%;
-	transition: all 0.5s;
-}
-.arrow::before {
-	left: -5px;
-	transform: rotate(45deg);
-	background-color: #394a6d;
-}
-.arrow::after {
-	left: 5px;
-	transform: rotate(-45deg);
-	background-color: #394a6d;
-}
-.open .arrow::before {
-	left: -5px;
-	transform: rotate(-45deg);
-}
-.open .arrow::after {
-	left: 5px;
-	transform: rotate(45deg);
-}
-*/
+
+
 /************************************/
 .square2 {
-    width: 34px;
-    height: 34px;
+	justify-self: stretch;
     border-radius: 5px;
-    background: #c1bfc1;
+	padding-left: 7px;
+	padding-right: 7px;
+    background: rgba(170, 161, 200, 0.25);
     display: flex;
     align-items: center;
-    justify-content: center;
+
 }
 
 .square2:hover {
@@ -454,7 +411,7 @@ button.selectAll {
 .categorySearch {
     width: 174px;
     height: 34px;
-    background: #dcdbe0;
+    background: rgba(170, 161, 200, 0.25);
     border: none;
     border-radius: 5px;
     padding-left: 8px;
@@ -499,6 +456,9 @@ button.selectAll {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+svg.custom-option{
+	margin: 5px 0px 5px 0px
 }
 
 .taskRectangle{
