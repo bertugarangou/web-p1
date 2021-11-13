@@ -31,9 +31,9 @@ for (const option of document.querySelectorAll(".custom-option")) {
             this.parentNode.querySelector('.custom-option.selected').classList.remove('selected');
             
             this.classList.add('selected');     
-            console.log(this.classList);
+            console.log(option.);
             
-            this.closest('.select').querySelector('.select__trigger svg').textContent = this.textContent;
+            this.closest('.select').querySelector('.select__trigger svg').innerHTML = `width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><rect class = "rectSVG" width="19" height="19" rx="5" fill="#01ff42"/>`;
         }
     })
 }
