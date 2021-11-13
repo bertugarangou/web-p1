@@ -13,6 +13,31 @@ document.querySelector(".selectAll").addEventListener("click", event => {
     actualitzarTickButton();
 });
 
+
+
+/*Desplegable de categories */
+
+document.querySelector('.select-wrapper').addEventListener('click', function() {
+    
+    this.querySelector('.select').classList.toggle('open');
+
+})
+
+/*Cambiar color por uno selecionado */
+for (const option of document.querySelectorAll(".custom-option")) {
+    option.addEventListener('click', function() {
+        if (!this.classList.contains('selected')) {
+            
+            this.parentNode.querySelector('.custom-option.selected').classList.remove('selected');
+            
+            this.classList.add('selected');     
+            console.log(this.classList);
+            
+            this.closest('.select').querySelector('.select__trigger svg').textContent = this.textContent;
+        }
+    })
+}
+
 function actualitzarTrashButton(){
     var algun = false;
     document.querySelectorAll(".checkbox").forEach(element => {

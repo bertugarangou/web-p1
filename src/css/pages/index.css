@@ -309,7 +309,7 @@ button.selectAll {
 #categoriesText{
 	font-size: 18px;
 }
-
+/*
 .rectangle {
     width: 66px;
     height: 34px;
@@ -333,7 +333,110 @@ button.selectAll {
 .square1:hover {
     background: #a5a5a5;
 }
+*/
+/**************LISTA DE CATEGORIAS DESPLEGABLE COLORES**********************/
+.select-wrapper {
+	position: relative;
+	user-select: none;
+	width: 100%;
+}
 
+.squareArrow {
+    width: 34px;
+    height: 34px;
+    border-radius: 5px;
+    background: #c1bfc1;
+	
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.squareArrow:hover {
+    background: #a5a5a5;
+}
+.select__trigger {
+
+	width: 66px;
+    height: 34px;
+    background: #dcdbe0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	padding-left: 10px;
+}
+.custom-options {
+	position: absolute;
+	display: block;
+	top: 100%;
+	left: 0;
+	right: 0;
+	border-top: 0;
+	background: #fff;
+	transition: all 0.5s;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	z-index: 2;
+}
+.select.open .custom-options {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: all;
+}
+.custom-option {
+	position: relative;
+	display: block;
+	padding: 0 22px 0 22px;
+	font-size: 22px;
+	font-weight: 300;
+	color: #3b3b3b;
+	line-height: 60px;
+	cursor: pointer;
+	transition: all 0.5s;
+}
+.custom-option:hover {
+	cursor: pointer;
+	background-color: #b2b2b2;
+}
+.custom-option.selected {
+	color: #ffffff;
+	background-color: #305c91;
+}
+/*
+.arrow {
+	position: relative;
+	height: 15px;
+	width: 15px;
+}
+.arrow::before, .arrow::after {
+	content: "";
+	position: absolute;
+	bottom: 0px;
+	width: 0.15rem;
+	height: 100%;
+	transition: all 0.5s;
+}
+.arrow::before {
+	left: -5px;
+	transform: rotate(45deg);
+	background-color: #394a6d;
+}
+.arrow::after {
+	left: 5px;
+	transform: rotate(-45deg);
+	background-color: #394a6d;
+}
+.open .arrow::before {
+	left: -5px;
+	transform: rotate(-45deg);
+}
+.open .arrow::after {
+	left: 5px;
+	transform: rotate(45deg);
+}
+*/
+/************************************/
 .square2 {
     width: 34px;
     height: 34px;
