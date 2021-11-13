@@ -85,6 +85,7 @@ document.querySelector("#trashButton").addEventListener("click",  event => {
     }, 500)
     
     checkedAll = true;
+    
 });
 
 
@@ -92,11 +93,9 @@ document.querySelector("#tickButton").addEventListener("click", async event => {
     var todos;
     if(todosVisibles == null){
         todos = await getTodos();
-        console.log("1r")
 
     }else{
         todos = todosVisibles.slice();
-        console.log("2ns")
     }
 
     for(var i = todos.length -1; i >= 0; i--){
@@ -114,6 +113,7 @@ document.querySelector("#tickButton").addEventListener("click", async event => {
     localStorage.setItem("todos", JSON.stringify(todosTotals));
     await carregarTodos();
     checkedAll = true;
+    //filterFunction();
 });
 
 document.querySelector(".add-task-button").addEventListener("click", event => {
@@ -225,6 +225,34 @@ function ordenarPerData(todos){
     //localStorage.setItem("todos", JSON.stringify(todos)); //deixar comentat sempre i quan no falli res d'ordres
 }
 
+function filterFunction(){  //Function inspired by W3S. Credit to its authors.
+    var input, filter, ul, li, a, i, txtValue, b, txtValue2;
+    input = document.getElementById("searchBx");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("tasklst");
+    li = ul.getElementsByClassName("task");
+
+    for (i = 0; i < li.length; i++) {
+        //obtenir titol
+        a = li[i].getElementsByClassName("taskTitle")[0];
+        txtValue = a.textContent || a.innerText;
+        //obtenir descr
+        a = li[i].getElementsByClassName("taskDescription")[0];
+        txtValue2 = a.textContent || a.innerText;
+        console.log(txtValue2)
+
+        //obtenir category
+
+        if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) {  //yes
+            li[i].style.display = "";
+            
+        } else {    //nope
+            li[i].style.display = "none";
+        }
+    }
+}
+
+
 async function carregarTodos(){
 
     document.querySelector(".tasklist").innerHTML = "";
@@ -299,4 +327,5 @@ async function carregarTodos(){
     });
     afegirCheckbox();
     calcularUrgents()
+    filterFunction();
 }
