@@ -12,9 +12,9 @@ async function getTodos() {
 }
 
 document.querySelector("#cancelBtn").addEventListener("click", event => {
-    window.location.href = "./index.html";
     edit = false;
     localStorage.removeItem("edit");
+    window.location.href = "./index.html";
     event.preventDefault();
 });
 
@@ -58,16 +58,16 @@ document.addEventListener("DOMContentLoaded", async event => {
     } else {
         edit = false;
     }
-    localStorage.removeItem("edit");
+    //localStorage.removeItem("edit");
 
 });
 
 
 
 document.querySelector("#acceptBtn").addEventListener("click", async event => {
+    event.preventDefault();
 
-
-    const todo = {
+    var todo = {
         id: Date.now(),
         titol: document.querySelector("#title").value,
         descripcio: document.querySelector("#description").value,
@@ -105,13 +105,20 @@ document.querySelector("#acceptBtn").addEventListener("click", async event => {
                 localStorage.setItem("todos", JSON.stringify(todos));
             } else {
                 var newTodos = await getTodos();
-
-                newTodos.splice(newTodos.indexOf(editing), 1);
+                var found = null;
+                var idActu = String(editing.id);
+                
+                for(var i = 0; i < newTodos.length ; i++){
+                    var idNou = String(newTodos[i].id);
+                    if(idActu.localeCompare(idNou) == 0){
+                        found = i;
+                    }
+                }
+                todo.id = newTodos[found].id;
+                newTodos.splice(found, 1);
                 newTodos.push(todo);
-                editing = null;
                 localStorage.setItem("todos", JSON.stringify(newTodos));
             }
-
         }
         window.location.href = "./index.html";
         event.preventDefault();
