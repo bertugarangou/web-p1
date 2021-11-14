@@ -44,7 +44,8 @@ document.querySelector(".square2").addEventListener("click", event=>{
     if(input != ""){
         const cat = {
             color: document.getElementById("colorChosen").getAttribute("fill"),
-            name: input
+            name: input,
+            id: Date.now()
         };
         //afegir localstorage
         const raw = localStorage.getItem("categories");
@@ -56,6 +57,7 @@ document.querySelector(".square2").addEventListener("click", event=>{
             localStorage.setItem("categories", JSON.stringify(cats));
         }
         carregarCategories();
+        document.getElementById("catBox").value = "";
     }
 });
 
@@ -334,12 +336,13 @@ async function carregarCategories(){
     await cats.forEach(cat =>{
         const {
             color,
-            name
+            name,
+            id
         } = cat;
     
         const nouElement =`
-        <div class="categoryList">
-            <button class="cross">
+        <div class="categoryList" id="${id}">
+            <button class="cross" onclick="deleteCategory('${id}')">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="black" fill-opacity="0.25" />
                 </svg>
@@ -353,6 +356,24 @@ async function carregarCategories(){
         </div>`;
         llista.innerHTML += nouElement;
     });
+
+}
+
+async function deleteCategory(id){
+    var categories = new Array();
+    categories = await getCategories();
+    var found;
+
+    for(var i = 0; i < categories.length; i++){
+        if( id.localeCompare(String(categories[i].id)) == 0){
+            found = i;
+        }
+    }
+
+    categories.splice(found, 1);
+
+    localStorage.setItem("categories", JSON.stringify(categories));
+    await carregarCategories();
 }
 
 async function carregarTodos() {
@@ -416,18 +437,7 @@ async function carregarTodos() {
                     <p class="taskDate">${deadline}</p>
                 </div>
                 <div class="container5">
-                    <div class="cosa">
-                        <p class="taskCategory1">Development</p>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="14" height="14" rx="5" fill="#43AA8B"/>
-                    </svg> 
-                    </div>
-                    <div class="cosa">
-                        <p class="taskCategory1">Uni Projects</p>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="14" height="14" rx="5" fill="#F94144"/>
-                    </svg>
-                    </div>
+                    <!--CATEGORIES-->
                 </div>
             </div>
         </div>
@@ -435,7 +445,20 @@ async function carregarTodos() {
 
         llista.innerHTML += nouElement;
     });
+
+    afegirCategories()
     afegirCheckbox();
     calcularUrgents();
     filterFunction();
+}
+
+async function afegirCategories(){
+    const nouElement = `
+    <div class="cosa">
+        <p class="taskCategory1">Development</p>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <rect width="14" height="14" rx="5" fill="#43AA8B"/>
+        </svg> 
+    </div>`;
+
 }
