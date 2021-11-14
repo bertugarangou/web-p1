@@ -100,6 +100,7 @@ function afegirCheckbox() {
     actualitzarTickButton();
 }
 
+
 //Al ser clickat el boto trash elimina la tasca del localStorage i fa la animacio de que desaparegui
 document.querySelector("#trashButton").addEventListener("click", event => {
     const main = document.querySelector('main');
