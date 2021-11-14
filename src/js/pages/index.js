@@ -362,7 +362,7 @@ async function deleteCategory(id){
     var categories = new Array();
     categories = await getCategories();
     var found;
-
+/*
     for(var i = 0; i < categories.length; i++){
         if( id.localeCompare(String(categories[i].id)) == 0){
             found = i;
@@ -373,6 +373,7 @@ async function deleteCategory(id){
 
     localStorage.setItem("categories", JSON.stringify(categories));
     await carregarCategories();
+    */
 }
 
 async function carregarTodos() {
@@ -454,12 +455,15 @@ async function carregarTodos() {
     todosVisibles.forEach(un =>{
         if(un.categoria != null){
             var index = 0;
+
+
             for(var i = 0; i < cats.length; i++){
                 var cat = cats[i];
                 if(String(cat.id).localeCompare(String(un.categoria)) == 0){
                     index = i;
                 }
             }
+
 
             const catHTML = document.querySelector("#todo-"+ un.id + " .container5");
             catHTML.innerHTML = `<div class="cosa">
