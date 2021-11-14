@@ -182,26 +182,6 @@ main {
     justify-content: space-evenly;
 }
 
-
-/*#categories {
-	font-size: 24px;
-	width: 240px;
-	height: 56px;
-}
-
-[for="categories"]  {
-	margin-bottom: 10px;
-}
-
-[name="categories"] {
-	width: 200px;
-	height: 46px;
-	border-radius: 5px;
-	text-align: center;
-	border: none;
-	background: rgba(170, 161, 200, 0.25);
-}*/
-
 .data-input-3 {
     grid-area: data-input-3;
     display: flex;
@@ -230,8 +210,6 @@ main {
     border: none;
     border-radius: 5px;
     resize: none;
-
-
 }
 
 .bottom-data-input {
@@ -376,8 +354,6 @@ button.sendBtn {
 .custom-options:last-child {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-
-
 }
 
 
@@ -403,7 +379,6 @@ button.sendBtn {
     width: 210px;
     background: #eae7f1
 }
-
 
 .arrow {
     position: relative;

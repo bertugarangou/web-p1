@@ -15,18 +15,19 @@ document.querySelector(".selectAll").addEventListener("click", event => {
 
 
 
-/*Desplegable de categories */
+/*Desplegable de categories*/
 
 document.querySelector('.select-wrapper').addEventListener('click', function() {
-
+    //Al clickar el desplegable de categorias farem que la animacio de obrir el menu s'activara
     this.querySelector('.select').classList.toggle('open');
     /*Cambiar color por uno selecionado */
+    //Recorem tots els colors que tenim a custom i mirem si el que ha clickat l'usuari es el selecionat, si nos es el selecionat haurem de fer que ho fagi
     for (const option of document.querySelectorAll(".custom-option")) {
         option.addEventListener('click', function() {
             if (!this.classList.contains('selected')) {
-
+                //Perque sigui el selecinat borrarem el antic selecionat 
                 this.parentNode.querySelector('.custom-option.selected').classList.remove('selected');
-
+                //Hi al nou direm que es selecionat i el farem que sorti a la part de dalt
                 this.classList.add('selected');
 
 
@@ -36,7 +37,7 @@ document.querySelector('.select-wrapper').addEventListener('click', function() {
     }
 });
 
-
+//Guardarem els valors de la categoria selecionada en una variable y la guardarem al localStorage
 document.querySelector(".square2").addEventListener("click", event=>{
     var input = document.getElementById("catBox");
     input = input.value;
@@ -59,7 +60,7 @@ document.querySelector(".square2").addEventListener("click", event=>{
         document.getElementById("catBox").value = "";
     }
 });
-
+//Activa o desactiva trashButton mirant si algun element esta amb el checkbox marcat
 function actualitzarTrashButton() {
     var algun = false;
     document.querySelectorAll(".checkbox").forEach(element => {
@@ -73,7 +74,7 @@ function actualitzarTrashButton() {
     else
         document.querySelector("#trashButton").setAttribute("disabled", "true");
 }
-
+//Activa o desactiva tickButton mirant si algun element esta amb el checkbox marcat
 function actualitzarTickButton() {
     var algun = false;
     document.querySelectorAll(".checkbox").forEach(element => {
@@ -87,7 +88,7 @@ function actualitzarTickButton() {
     else
         document.querySelector("#tickButton").setAttribute("disabled", "true");
 }
-
+//Activem o desactivem el Trash i tickButton
 function afegirCheckbox() {
     document.querySelectorAll(".checkbox").forEach(element => {
         element.addEventListener("change", event => {
@@ -99,7 +100,7 @@ function afegirCheckbox() {
     actualitzarTickButton();
 }
 
-
+//Al ser clickat el boto trash elimina la tasca del localStorage i fa la animacio de que desaparegui
 document.querySelector("#trashButton").addEventListener("click", event => {
     const main = document.querySelector('main');
     var todos;
@@ -135,8 +136,8 @@ document.querySelector("#trashButton").addEventListener("click", event => {
 
 });
 
-
-document.querySelector("#tickButton").addEventListener("click", async event => { //no em toqueu que funciono sense saber com ;-;
+//
+document.querySelector("#tickButton").addEventListener("click", async event => { 
     var todos;
     if (todosVisibles == null) {
         todos = await getTodos();
@@ -177,10 +178,11 @@ document.querySelector(".add-task-button").addEventListener("click", event => {
 }
 */
 document.addEventListener("DOMContentLoaded", async event => {
+    await carregarCategories(); 
     await carregarTodos();
     await calcularDuties();
     await calcularUrgents();
-    await carregarCategories();
+    
 
 });
 
@@ -282,28 +284,44 @@ function ordenarPerData(todos) {
     //localStorage.setItem("todos", JSON.stringify(todos)); //deixar comentat sempre i quan no falli res d'ordres
 }
 
-function filterFunction() {
-    var input, filter, pack, items, a, i, txtValue, txtValue2, b;
+async function filterFunction() {
+    var input, filter, pack, items, a, i, txtValue, txtValue2, b, c, txtValue3;
     input = document.getElementById("searchBx");
     filter = input.value.toUpperCase();
     pack = document.getElementById("tasklst");
     items = pack.getElementsByClassName("task");
 
+
     for (i = 0; i < items.length; i++) {
+        
         //obtenir titol
         a = items[i].getElementsByClassName("taskTitle")[0];
         txtValue = a.textContent || a.innerText;
         //obtenir descr
         b = items[i].getElementsByClassName("taskDescription")[0];
         txtValue2 = b.textContent || b.innerText;
+        //obtenir cat
+        c = items[i].getElementsByClassName("taskCategory1")[0];
+        if(c == undefined){
+            if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) {
+                items[i].style.display = "";
 
-        //obtenir category
+            } else {
+                items[i].style.display = "none";
+            }
 
-        if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) { //yes
-            items[i].style.display = "";
 
-        } else { //nope
-            items[i].style.display = "none";
+        }else{
+            txtValue3 = String(c.textContent || c.innerText);
+            console.log(txtValue3)
+            if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 || txtValue3.toUpperCase().indexOf(filter) > -1) {
+                items[i].style.display = "";
+
+            } else {
+                items[i].style.display = "none";
+            }
+
+
         }
     }
 }
@@ -379,17 +397,14 @@ async function deleteCategory(id){
     //borrar categoria del todo
 
     const todos = await getTodos();
-    for(var i = 0; i < todos.length; i++){
-        var todo = todos[i];
-        console.log(todo)
+    for(var j = 0; j < todos.length; j++){
+        var todo = todos[j];
         if(idString.localeCompare(todo.categoria) == 0){
-            console.log(todo.categoria)
             todo.categoria = null;
 
         }
 
     }
-    console.log(todos)
     localStorage.setItem("todos", JSON.stringify(todos))
     carregarTodos()
 }
@@ -465,11 +480,10 @@ async function carregarTodos() {
     });
     
     afegirCheckbox();
-    await calcularUrgents();
-    filterFunction();
-    await addCategories()
-
     
+    await addCategories()
+    await calcularUrgents();
+    await filterFunction();    
 }
 
 async function addCategories(){

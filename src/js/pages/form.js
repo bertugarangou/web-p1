@@ -167,7 +167,6 @@ document.querySelector('.select-wrapper').addEventListener('click', function() {
     for (const option of document.querySelectorAll(".custom-option")) {
         option.addEventListener('click', function() {
             categoriaSelect = option.getAttribute("id");
-            console.log(categoriaSelect);
             if (!this.classList.contains('selected')) {
                 
                 document.querySelector(".custom-option.selected").classList.remove('selected');

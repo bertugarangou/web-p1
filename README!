@@ -1,0 +1,4 @@
+Degut a que estem programant en Windwos, la comanda "del" no borra els directoris sinó sols els fitxer. A l'utilitzar "rmdir", sí es borren els directoris però si s'executa per primer cop i noexisteix la carpeta, llança un error.
+Si us plau, crear la carpeta "arrel" './dist' manualment abans d'executar "npm run build".
+
+"npm start" utilitza el directori "./dist" com a arrel.
