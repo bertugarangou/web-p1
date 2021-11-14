@@ -175,9 +175,13 @@ async function getTodos(){
 }
 
 async function calcularDuties(){
-    const duties = JSON.parse(localStorage.todos).length;
-    const dutiesHTML = document.querySelector(".duties");
+    var duties;
+    if(localStorage.todos != null){
+    duties = JSON.parse(localStorage.todos).length;
+    var dutiesHTML;
+    dutiesHTML = document.querySelector(".duties");
     dutiesHTML.innerHTML = `<p class="duties">${duties} duties</p>`;
+    }
 }
 
 async function calcularUrgents(){
@@ -276,6 +280,13 @@ function filterFunction(){  //Function inspired by W3S. Credit to its authors.
 }
 
 
+function editFunction(todoID){
+    localStorage.setItem("edit", todoID)
+
+    window.location.href = "./form.html";
+
+}
+
 async function carregarTodos(){
 
     document.querySelector(".tasklist").innerHTML = "";
@@ -313,7 +324,7 @@ async function carregarTodos(){
         <div class="taskSquare" completed="${completed}">
             <input type="checkbox" class="checkbox">
         </div>
-        <div class="taskRectangle" completed="${completed}">
+        <div class="taskRectangle" completed="${completed}" onclick="editFunction('todo-${id}')">
             <div class="container1">
                 <img src="${imatge}" alt="Board with paper. Website logo." id="webLogo"
                 height="47" width="47">

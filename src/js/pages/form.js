@@ -1,10 +1,23 @@
+const imatgeActual = document.querySelector(".coverImageSelected");
+var edit = false;
+var editing;
+
+async function getTodos(){
+    const raw = localStorage.getItem("todos");
+    if(raw == null){
+        return [];
+    }
+    return await JSON.parse(raw);
+    
+}
+
 document.querySelector("#cancelBtn").addEventListener("click", event => {
     window.location.href = "./index.html";
+    edit = false;
+    localStorage.removeItem("edit")
     event.preventDefault();
 });
 
-
-const imatgeActual = document.querySelector(".coverImageSelected");
 
 document.querySelectorAll(".coverImage").forEach(element => {
     element.addEventListener("click", event => {
@@ -13,7 +26,43 @@ document.querySelectorAll(".coverImage").forEach(element => {
 });
 
 
+document.addEventListener("DOMContentLoaded", async event => {
+    var id = localStorage.getItem("edit");
+
+
+    if(id != null){
+        edit = true;
+
+        id = id.split("-")
+        id = id[1]
+        data = await getTodos();
+        
+        data.forEach(todo =>{
+            if(id.localeCompare(todo.id) == 0){//si ha trobat la tasca
+                editing = todo;
+            }
+        } );
+        document.getElementById('title').value = editing.titol;
+
+        const check = document.querySelector("#completedCheck");
+        if(editing.completed == 1){
+            check.checked = true;
+        }
+
+        document.getElementById('date').value = editing.deadline; 
+        document.getElementById('description').value = editing.descripcio;
+    }else{
+         edit = false;
+    }
+    localStorage.removeItem("edit");
+
+});
+
+
+
 document.querySelector("#acceptBtn").addEventListener("click", async event => {
+
+
     const todo = {
         id: Date.now(),
         titol: document.querySelector("#title").value,
@@ -43,22 +92,35 @@ document.querySelector("#acceptBtn").addEventListener("click", async event => {
 
         const raw = localStorage.getItem("todos");
         if (raw == null) {
+
             localStorage.setItem("todos", JSON.stringify([todo]));
         }else{
             const todos = await JSON.parse(raw);
-            todos.push(todo);
-            localStorage.setItem("todos", JSON.stringify(todos));
+            if(edit == false){
+                todos.push(todo);
+                localStorage.setItem("todos", JSON.stringify(todos));
+            }else{
+                var newTodos = await getTodos();
+
+                newTodos.splice(newTodos.indexOf(editing),1)
+                newTodos.push(todo)
+                editing = null;
+                localStorage.setItem("todos", JSON.stringify(newTodos));
+            }
+            
         }
         window.location.href = "./index.html";
         event.preventDefault();
     }
+    edit = false;
     event.preventDefault();
 });
 
+/*
 document.querySelector('.select-wrapper').addEventListener('click', function() {
     
     this.querySelector('.select').classList.toggle('open');
-    /*Cambiar color por uno selecionado */
+
     for (const option of document.querySelectorAll(".custom-option")) {
         option.addEventListener('click', function() {
             if (!this.classList.contains('selected')) {
@@ -73,4 +135,5 @@ document.querySelector('.select-wrapper').addEventListener('click', function() {
             }
         })
     }
-})
+});
+*/
