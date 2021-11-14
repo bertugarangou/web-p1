@@ -229,13 +229,13 @@ button.selectAll {
 	color: white;
 }
 
-#today[active="true"] {
+#today[data-name="true"] {
 	color: #6247AA;
 
 }
 
 
-#today[active="true"] .asideViewButtonImg {
+#today[data-name="true"] .asideViewButtonImg {
 	fill: #6247AA;
 
 }
@@ -250,13 +250,13 @@ button.selectAll {
 
 }
 
-#allDuties[active="true"] {
+#allDuties[data-name="true"] {
 	color: #6247AA;
 
 	
 }
 
-#allDuties[active="true"] .asideViewButtonImg{
+#allDuties[data-name="true"] .asideViewButtonImg{
 	fill: #6247AA;
 
 }

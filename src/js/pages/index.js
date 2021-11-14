@@ -206,9 +206,9 @@ document.querySelector("#today").addEventListener("click", event => {
     allDuties = false;
 
     const text = document.querySelector("#today");
-    text.setAttribute('active', 'true');
+    text.setAttribute('data-name', 'true');
     const text2 = document.querySelector("#allDuties");
-    text2.setAttribute('active', 'false');
+    text2.setAttribute('data-name', 'false');
 
     carregarTodos();
 });
@@ -217,9 +217,9 @@ document.querySelector("#allDuties").addEventListener("click", event =>{
     allDuties = true;
 
     const text = document.querySelector("#allDuties");
-    text.setAttribute('active', 'true');
+    text.setAttribute('data-name', 'true');
     const text2 = document.querySelector("#today");
-    text2.setAttribute('active', 'false');
+    text2.setAttribute('data-name', 'false');
 
     carregarTodos();
 });
