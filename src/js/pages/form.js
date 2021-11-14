@@ -74,7 +74,6 @@ document.addEventListener("DOMContentLoaded", async event => {
 
 async function carregarCategories(){
     categories = await getCategories();
-    console.log(categories);
 }
 
 async function getCategories() {
@@ -172,7 +171,6 @@ document.querySelector('.select-wrapper').addEventListener('click', function() {
             if (!this.classList.contains('selected')) {
                 
                 document.querySelector(".custom-option.selected").classList.remove('selected');
-                console.log(this.classList);
                 this.classList.add('selected');
                 
 

@@ -362,7 +362,8 @@ async function deleteCategory(id){
     var categories = new Array();
     categories = await getCategories();
     var found;
-/*
+    var idString = String(id);
+
     for(var i = 0; i < categories.length; i++){
         if( id.localeCompare(String(categories[i].id)) == 0){
             found = i;
@@ -373,7 +374,24 @@ async function deleteCategory(id){
 
     localStorage.setItem("categories", JSON.stringify(categories));
     await carregarCategories();
-    */
+    //borrar categoria
+
+    //borrar categoria del todo
+
+    const todos = await getTodos();
+    for(var i = 0; i < todos.length; i++){
+        var todo = todos[i];
+        console.log(todo)
+        if(idString.localeCompare(todo.categoria) == 0){
+            console.log(todo.categoria)
+            todo.categoria = null;
+
+        }
+
+    }
+    console.log(todos)
+    localStorage.setItem("todos", JSON.stringify(todos))
+    carregarTodos()
 }
 
 async function carregarTodos() {
@@ -446,14 +464,18 @@ async function carregarTodos() {
         llista.innerHTML += nouElement;
     });
     
-    await afegirCategories()
     afegirCheckbox();
     await calcularUrgents();
     filterFunction();
+    await addCategories()
 
+    
+}
+
+async function addCategories(){
     const cats = await getCategories();
     todosVisibles.forEach(un =>{
-        if(un.categoria != null){
+        if(un.categoria != null && un.categoria != "null"){
             var index = 0;
 
 
@@ -477,18 +499,5 @@ async function carregarTodos() {
 
 
         }
-    })
-    
-}
-
-
-async function afegirCategories(){
-    const nouElement = `
-    <div class="cosa">
-        <p class="taskCategory1">Development</p>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <rect width="14" height="14" rx="5" fill="#43AA8B"/>
-        </svg> 
-    </div>`;
-
+    });
 }
