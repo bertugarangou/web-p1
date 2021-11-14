@@ -1,320 +1,328 @@
-html{
-	height: 100%;
+html {
+    height: 100%;
 }
+
 body {
-	font-family: Roboto, sans-serif, Arial;
-	/*3 fonts pel backup*/
-	background: #F1F1F1;
-	height: 100%;
+    font-family: Roboto, sans-serif, Arial;
+    /*3 fonts pel backup*/
+    background: #F1F1F1;
+    height: 100%;
 }
 
 @font-face {
-	font-family: "Roboto";
-	src: url("../../webfont/Roboto-Regular.ttf");
+    font-family: "Roboto";
+    src: url("../../webfont/Roboto-Regular.ttf");
 }
 
 @font-face {
-	font-family: "Roboto";
-	src: url("../../webfont/Roboto-Bold.ttf");
-	font-weight: bold;
+    font-family: "Roboto";
+    src: url("../../webfont/Roboto-Bold.ttf");
+    font-weight: bold;
 }
 
 main {
-	display: grid;
-	height: 100%;
-	grid-template-columns: 0.4fr 1.5fr 0.1fr;
-	grid-template-rows: 1fr;
-	gap: 0px 0px;
-	grid-auto-flow: row;
-	grid-template-areas: "menu principal space";
-	background: #F1F1F1;
+    display: grid;
+    height: 100%;
+    grid-template-columns: 0.4fr 1.5fr 0.1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas: "menu principal space";
+    background: #F1F1F1;
 }
 
-.space-empty{
-	grid-area: space;
-	height: 100%;
-	width: 100%;
+.space-empty {
+    grid-area: space;
+    height: 100%;
+    width: 100%;
 }
 
 .menu {
-	display: flex;
-	flex-direction: column;
-	grid-area: menu;
-	background: white;
-	border-radius: 5px;
-	margin: 10px 60px 10px 10px;
-	padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    grid-area: menu;
+    background: white;
+    border-radius: 5px;
+    margin: 10px 60px 10px 10px;
+    padding-right: 20px;
 }
 
 .topInfo {
-	display: flex;
-	margin-bottom: 50px;
+    display: flex;
+    margin-bottom: 50px;
 }
-#webLogo:hover{
-	animation: rueda 2s infinite;
+
+#webLogo:hover {
+    animation: rueda 2s infinite;
 }
 
 @keyframes rueda {
     from {
-        transform:rotate(0deg);
+        transform: rotate(0deg);
     }
+
     to {
-        transform:rotate(360deg);
+        transform: rotate(360deg);
     }
 }
+
 .topInfoText {
-	font-size: 13px;
-	color: #808080;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+    font-size: 13px;
+    color: #808080;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .duties {
-	margin: 0px;
+    margin: 0px;
 }
 
 .urgents {
-	margin-top: 2px;
+    margin-top: 2px;
 }
 
 .title-todo {
-	font-size: 20px;
-	margin-bottom: 5px;
-	color: black;
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: black;
 }
 
 .asideViewButtonText {
-	margin-left: 16px;
+    margin-left: 16px;
 }
 
 .asideViewButtonImg {
-	margin-left: 30px;
-	fill: black;
+    margin-left: 30px;
+    fill: black;
 }
 
 
 .principal {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 0.4fr 0.3fr 2.3fr;
-	gap: 0px 0px;
-	grid-auto-flow: row;
-	grid-template-areas: "titol" "barra" "tasques";
-	grid-area: principal;
-	background: #F1F1F1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.4fr 0.3fr 2.3fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas: "titol""barra""tasques";
+    grid-area: principal;
+    background: #F1F1F1;
 }
 
 .barra {
-	display: grid;
-	grid-template-columns: 1fr 0.9fr 1.1fr;
-	grid-template-rows: 1fr;
-	gap: 0px 0px;
-	grid-auto-flow: row;
-	grid-template-areas: "barra-1 barra-2 barra-3";
-	grid-area: barra;
+    display: grid;
+    grid-template-columns: 1fr 0.9fr 1.1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas: "barra-1 barra-2 barra-3";
+    grid-area: barra;
 }
 
 .barra-1 {
-	display: flex;
-	align-items: center;
-	grid-area: barra-1;
-	margin-top: 35px;
+    display: flex;
+    align-items: center;
+    grid-area: barra-1;
+    margin-top: 35px;
 }
 
 .barra-2 {
-	grid-area: barra-2;
-	margin-top: 35px;
+    grid-area: barra-2;
+    margin-top: 35px;
 }
 
 .barra-3 {
-	display: flex;
-	align-items: center;
-	justify-content: left;
-	grid-area: barra-3;
-	width: 100%;
-	margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    grid-area: barra-3;
+    width: 100%;
+    margin-top: 35px;
 }
 
 .searchBox {
-	padding-left: 8px;
-	background: rgba(255, 255, 255, 0);
-	border: 0px;
-	height: 56px;
-	width: 100%;
-	border-radius: 5px;
+    padding-left: 8px;
+    background: rgba(255, 255, 255, 0);
+    border: 0px;
+    height: 56px;
+    width: 100%;
+    border-radius: 5px;
 }
 
 .imageSearch {
-	height: 25px;
-	width: 25px;
-	margin-right: 5px;
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
 }
 
 .searchbox-back {
-	background: rgba(170, 161, 200, 0.25);
-	border-radius: 5px;
-	display: flex;
-	justify-content: stretch;
-	align-items: center;
-	width: 100%;
-	box-shadow: 0px 4px 3px rgb(172, 167, 167);
+    background: rgba(170, 161, 200, 0.25);
+    border-radius: 5px;
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0px 4px 3px rgb(172, 167, 167);
 }
 
 .titol {
-	display: grid;
-	grid-area: titol;
-	align-items: end;
+    display: grid;
+    grid-area: titol;
+    align-items: end;
 }
 
 .tasques {
-	grid-area: tasques;
+    grid-area: tasques;
 }
 
 .titol-principal {
-	font-size: 36px;
-	margin-left: 10px;
-	text-shadow: 0px 4px 3px rgb(172, 167, 167);
+    font-size: 36px;
+    margin-left: 10px;
+    text-shadow: 0px 4px 3px rgb(172, 167, 167);
 }
 
 .tick {
-	grid-area: tick;
+    grid-area: tick;
 }
 
 .trash {
-	grid-area: trash;
+    grid-area: trash;
 }
 
 button {
-	border: none;
-	font-size: 24px;
-	border-radius: 5px;
-	font-family: 'Roboto';
+    border: none;
+    font-size: 24px;
+    border-radius: 5px;
+    font-family: 'Roboto';
 }
 
 button.add-task-button {
-	font-size: 24px;
-	background-color: #6247AA;
-	color: white;
-	font-weight: bold;
-	height: 46px;
-	width: 285px;
-	align-self: left;
-	margin: 0px 10px 15px 10px;
+    font-size: 24px;
+    background-color: #6247AA;
+    color: white;
+    font-weight: bold;
+    height: 46px;
+    width: 285px;
+    align-self: left;
+    margin: 0px 10px 15px 10px;
 }
 
 button.add-task-button:hover {
-	background-color: #785dda;
-	color: white;
+    background-color: #785dda;
+    color: white;
 }
 
 button.selectAll {
-	background-color: #AAA1C8;
-	grid-area: selectAll;
-	color: black;
-	height: 56px;
-	width: 172px;
-	font-weight: bold;
-	margin-right: 27px;
-	box-shadow: 0px 4px 3px rgb(172, 167, 167);
+    background-color: #AAA1C8;
+    grid-area: selectAll;
+    color: black;
+    height: 56px;
+    width: 172px;
+    font-weight: bold;
+    margin-right: 27px;
+    box-shadow: 0px 4px 3px rgb(172, 167, 167);
 }
 
 .selectAll:active {
-	background-color: #6247AA;
-	color: white;
+    background-color: #6247AA;
+    color: white;
 }
 
 .selectAll:hover {
-	background-color: #6247AA;
-	color: white;
+    background-color: #6247AA;
+    color: white;
 }
 
 #today[data-name="true"] {
-	color: #6247AA;
+    color: #6247AA;
 
 }
 
 
 #today[data-name="true"] .asideViewButtonImg {
-	fill: #6247AA;
+    fill: #6247AA;
 
 }
 
 #today:hover {
-	color: #6247AA;
+    color: #6247AA;
 
 }
 
 #today:hover .asideViewButtonImg {
-	fill: #6247AA;
+    fill: #6247AA;
 
 }
 
 #allDuties[data-name="true"] {
-	color: #6247AA;
+    color: #6247AA;
 
-	
+
 }
 
-#allDuties[data-name="true"] .asideViewButtonImg{
-	fill: #6247AA;
+#allDuties[data-name="true"] .asideViewButtonImg {
+    fill: #6247AA;
 
 }
 
 #allDuties:hover {
-	color: #6247AA;
+    color: #6247AA;
 
 }
 
 #allDuties:hover .asideViewButtonImg {
-	fill: #6247AA;
+    fill: #6247AA;
 
 }
-#allDuties{
-	font-size: 18px;
+
+#allDuties {
+    font-size: 18px;
 }
-#today{
-	font-size: 18px;
+
+#today {
+    font-size: 18px;
 }
 
 .btnTickTrash {
-	border: none;
-	height: 56px;
-	width: 56px;
-	margin: 0px 15px 0px 15px;
-	border-radius: 5px;
-	background-color: #AAA1C8;
-	box-shadow: 0px 4px 3px rgb(172, 167, 167);
-	fill: black;
+    border: none;
+    height: 56px;
+    width: 56px;
+    margin: 0px 15px 0px 15px;
+    border-radius: 5px;
+    background-color: #AAA1C8;
+    box-shadow: 0px 4px 3px rgb(172, 167, 167);
+    fill: black;
 }
 
 .btnTickTrash:active {
-	background-color: #8B74D8;
+    background-color: #8B74D8;
 }
 
 .btnTickTrash:hover {
-	background-color: #8B74D8;
+    background-color: #8B74D8;
 }
 
 .btnTickTrash:disabled {
-	fill: black;
-	background-color: #C6C6C6;
+    fill: black;
+    background-color: #C6C6C6;
 }
 
 .selectCategory {
     display: flex;
-    gap : 8px;
-	margin-left: 20px;
+    gap: 8px;
+    margin-left: 20px;
 
 }
-#categoriesText{
-	font-size: 18px;
+
+#categoriesText {
+    font-size: 18px;
 }
+
 .select-wrapper {
-	position: relative;
-	user-select: none;
-	width: 100%;
-	
+    position: relative;
+    user-select: none;
+    width: 100%;
+
 }
 
 .squareArrow {
@@ -326,78 +334,83 @@ button.selectAll {
     align-items: center;
     justify-content: center;
 }
+
 .squareArrow:hover {
     background: rgba(170, 161, 200, 0.50);
 }
+
 .select__trigger {
 
-	width: 66px;
+    width: 66px;
     height: 34px;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-	padding-left: 10px;
-	background: rgba(170, 161, 200, 0.25);
+    padding-left: 10px;
+    background: rgba(170, 161, 200, 0.25);
 }
+
 .custom-options {
-	position: absolute;
-	display: block;
-	top: 100%;
-	left: 0;
-	right: 0;
-	border-top: 0;
-	opacity: 25%;
-	transition: all .5s;
-	visibility: hidden;
-	pointer-events: none;
-	z-index: 2;
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-top: 0;
+    opacity: 25%;
+    transition: all .5s;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 2;
 }
 
-.custom-options{
-	background: #eae7f1
+.custom-options {
+    background: #eae7f1
 }
-.custom-options:last-child{
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
 
-	
+.custom-options:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+
 }
 
 
 
 .select.open .custom-options {
-	opacity: 1;
-	visibility: visible;
-	pointer-events: all;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
 }
+
 .custom-option {
-	position: relative;
-	display: block;
-	padding: 0 22px 0 22px;
-	font-size: 22px;
-	font-weight: 300;
-	color: #3b3b3b;
-	line-height: 60px;
-	cursor: pointer;
-	transition: all 0.5s;
+    position: relative;
+    display: block;
+    padding: 0 22px 0 22px;
+    font-size: 22px;
+    font-weight: 300;
+    color: #3b3b3b;
+    line-height: 60px;
+    cursor: pointer;
+    transition: all 0.5s;
 }
 
 
 
 .arrow {
-	position: relative;
-	height: 15px;
-	width: 15px;
+    position: relative;
+    height: 15px;
+    width: 15px;
 }
 
 
 /************************************/
 .square2 {
-	justify-self: stretch;
+    justify-self: stretch;
     border-radius: 5px;
-	padding-left: 7px;
-	padding-right: 7px;
+    padding-left: 7px;
+    padding-right: 7px;
     background: rgba(170, 161, 200, 0.25);
     display: flex;
     align-items: center;
@@ -433,7 +446,7 @@ button.selectAll {
 }
 
 .task {
-	margin-top: 44px;
+    margin-top: 44px;
     display: flex;
     gap: 8px;
 }
@@ -447,7 +460,8 @@ button.selectAll {
     height: 30px;
     border-radius: 5px;
 }
-.taskSquare{
+
+.taskSquare {
     background-color: white;
     width: 88px;
     height: 88px;
@@ -457,28 +471,32 @@ button.selectAll {
     justify-content: center;
     align-items: center;
 }
-svg.custom-option{
-	margin: 5px 0px 5px 0px
+
+svg.custom-option {
+    margin: 5px 0px 5px 0px
 }
 
-.taskRectangle{
+.taskRectangle {
     background-color: white;
     width: 100%;
     height: 88px;
     border-radius: 5px;
     box-shadow: 0px 4px 3px rgb(172, 167, 167);
     display: flex;
-	justify-self: left;
-	justify-content: space-between;
-}
-.taskRectangle[completed="true"]{
-	background: rgba(170, 161, 200, 0.25);
-}
-.taskSquare[completed="true"]{
-	background: rgba(170, 161, 200, 1);
+    justify-self: left;
+    justify-content: space-between;
 }
 
-.taskRectangle:hover , .taskSquare:hover {
+.taskRectangle[completed="true"] {
+    background: rgba(170, 161, 200, 0.25);
+}
+
+.taskSquare[completed="true"] {
+    background: rgba(170, 161, 200, 1);
+}
+
+.taskRectangle:hover,
+.taskSquare:hover {
     background-color: #C6C6C6;
 }
 
@@ -486,11 +504,11 @@ svg.custom-option{
     width: 105px;
     height: 88px;
     display: flex;
-	margin-left: 5px;
-	margin-right: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
     justify-content: center;
     align-items: center;
-	justify-self: left;
+    justify-self: left;
 }
 
 .container2 {
@@ -498,7 +516,7 @@ svg.custom-option{
     height: 88px;
     align-items: center;
     justify-content: left;
-	justify-self: left;
+    justify-self: left;
 }
 
 .taskTitle {
@@ -519,7 +537,7 @@ svg.custom-option{
     height: 88px;
     display: flex;
     flex-direction: column;
-	justify-self: right;
+    justify-self: right;
 }
 
 .container4 {
@@ -534,7 +552,7 @@ svg.custom-option{
     font-size: 16px;
     font-weight: bolder;
     margin-right: 14px;
-	margin-left: 14px;
+    margin-left: 14px;
 }
 
 .container5 {
@@ -560,29 +578,31 @@ svg.custom-option{
     font-size: 12px;
 }
 
-.urgentState{
-	color: #6247AA;
-	display: flex;
-	justify-content: top;
-	align-items: flex-start;
-	font-size: 14;
-	font-weight: bold;
+.urgentState {
+    color: #6247AA;
+    display: flex;
+    justify-content: top;
+    align-items: flex-start;
+    font-size: 14;
+    font-weight: bold;
 }
 
 .vanish .task[borrar="true"] {
-	animation: 0.5s taskVanish;
-	animation-fill-mode: forwards;
+    animation: 0.5s taskVanish;
+    animation-fill-mode: forwards;
 }
 
 @keyframes taskVanish {
-	0% {
-	  opacity: 1;
-	}
-	50% {
-	  opacity: 0.5;
-	}
-	100% {
-	  display: none;
-	  opacity: 0;
-	}
-  }
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        display: none;
+        opacity: 0;
+    }
+}

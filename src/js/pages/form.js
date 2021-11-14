@@ -2,13 +2,13 @@ const imatgeActual = document.querySelector(".coverImageSelected");
 var edit = false;
 var editing;
 
-async function getTodos(){
+async function getTodos() {
     const raw = localStorage.getItem("todos");
-    if(raw == null){
+    if (raw == null) {
         return [];
     }
     return await JSON.parse(raw);
-    
+
 }
 
 document.querySelector("#cancelBtn").addEventListener("click", event => {
@@ -30,33 +30,33 @@ document.addEventListener("DOMContentLoaded", async event => {
     var id = localStorage.getItem("edit");
 
 
-    if(id != null){
+    if (id != null) {
         edit = true;
 
         id = id.split("-");
         id = id[1];
         var data = await getTodos();
-        
-        data.forEach(todo =>{
-            if(id.localeCompare(todo.id) == 0){//si ha trobat la tasca
+
+        data.forEach(todo => {
+            if (id.localeCompare(todo.id) == 0) { //si ha trobat la tasca
                 editing = todo;
             }
-        } );
+        });
         document.getElementById('title').value = editing.titol;
 
         const check = document.querySelector("#completedCheck");
-        if(editing.completed == 1){
+        if (editing.completed == 1) {
             check.checked = true;
         }
 
-        document.getElementById('date').value = editing.deadline; 
+        document.getElementById('date').value = editing.deadline;
         document.getElementById('description').value = editing.descripcio;
 
         const imatge = document.getElementById("imageCoverID");
         imatge.setAttribute("src", editing.imatge);
 
-    }else{
-         edit = false;
+    } else {
+        edit = false;
     }
     localStorage.removeItem("edit");
 
@@ -80,38 +80,38 @@ document.querySelector("#acceptBtn").addEventListener("click", async event => {
     var errorFlag = 0;
     const errorZone = document.querySelector(".error-zone");
     errorZone.innerHTML = ``;
-    if(todo.titol.length == 0 || todo.titol.length > 100){
+    if (todo.titol.length == 0 || todo.titol.length > 100) {
         errorFlag = 1;
         errorZone.innerHTML += `<span id="errorTitle">Title required. Maximum 100 characters length.ㅤ</span>`;
     }
-    if(todo.descripcio.length == 0 || todo.descripcio.length > 1000){
+    if (todo.descripcio.length == 0 || todo.descripcio.length > 1000) {
         errorFlag = 1;
         errorZone.innerHTML += `<span id="erorrDescription"> Description required. Maximum 1000 characters length.ㅤ</span>`;
     }
-    if(todo.deadline.length == 0){
+    if (todo.deadline.length == 0) {
         errorFlag = 1;
         errorZone.innerHTML += `<span id="errorDeadline"> Deadline required.ㅤ</span>`;
     }
-    if(errorFlag != 1){
+    if (errorFlag != 1) {
 
         const raw = localStorage.getItem("todos");
         if (raw == null) {
 
             localStorage.setItem("todos", JSON.stringify([todo]));
-        }else{
+        } else {
             const todos = await JSON.parse(raw);
-            if(edit == false){
+            if (edit == false) {
                 todos.push(todo);
                 localStorage.setItem("todos", JSON.stringify(todos));
-            }else{
+            } else {
                 var newTodos = await getTodos();
 
-                newTodos.splice(newTodos.indexOf(editing),1);
+                newTodos.splice(newTodos.indexOf(editing), 1);
                 newTodos.push(todo);
                 editing = null;
                 localStorage.setItem("todos", JSON.stringify(newTodos));
             }
-            
+
         }
         window.location.href = "./index.html";
         event.preventDefault();

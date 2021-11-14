@@ -9,7 +9,7 @@ document.querySelector(".selectAll").addEventListener("click", event => {
         element.checked = checkedAll;
     });
     checkedAll = !checkedAll;
-    actualitzarTrashButton()
+    actualitzarTrashButton();
     actualitzarTickButton();
 });
 
@@ -18,54 +18,54 @@ document.querySelector(".selectAll").addEventListener("click", event => {
 /*Desplegable de categories */
 
 document.querySelector('.select-wrapper').addEventListener('click', function() {
-    
+
     this.querySelector('.select').classList.toggle('open');
     /*Cambiar color por uno selecionado */
     for (const option of document.querySelectorAll(".custom-option")) {
         option.addEventListener('click', function() {
             if (!this.classList.contains('selected')) {
-                
+
                 this.parentNode.querySelector('.custom-option.selected').classList.remove('selected');
-                
-                this.classList.add('selected');     
+
+                this.classList.add('selected');
 
                 console.log();
-                
+
                 this.closest('.select').querySelector('.select__trigger svg').innerHTML = `width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><rect class = "rectSVG" width="19" height="19" rx="5" fill="${option.querySelector(".rectSVG").getAttribute("fill")}"/>`;
             }
-        })
+        });
     }
-})
+});
 
-function actualitzarTrashButton(){
+function actualitzarTrashButton() {
     var algun = false;
     document.querySelectorAll(".checkbox").forEach(element => {
-        if(element.checked){
+        if (element.checked) {
             algun = true;
         }
     });
 
-    if(algun)
+    if (algun)
         document.querySelector("#trashButton").removeAttribute("disabled");
     else
         document.querySelector("#trashButton").setAttribute("disabled", "true");
 }
 
-function actualitzarTickButton(){
+function actualitzarTickButton() {
     var algun = false;
     document.querySelectorAll(".checkbox").forEach(element => {
-        if(element.checked){
+        if (element.checked) {
             algun = true;
         }
     });
 
-    if(algun)
+    if (algun)
         document.querySelector("#tickButton").removeAttribute("disabled");
     else
         document.querySelector("#tickButton").setAttribute("disabled", "true");
 }
 
-function afegirCheckbox(){
+function afegirCheckbox() {
     document.querySelectorAll(".checkbox").forEach(element => {
         element.addEventListener("change", event => {
             actualitzarTrashButton();
@@ -77,58 +77,58 @@ function afegirCheckbox(){
 }
 
 
-document.querySelector("#trashButton").addEventListener("click",  event => {
+document.querySelector("#trashButton").addEventListener("click", event => {
     const main = document.querySelector('main');
     var todos;
-    if(todosVisibles == null){
+    if (todosVisibles == null) {
         todos = getTodos();
-    }else{
+    } else {
         todos = todosVisibles.slice();
     }
     var copia = todos.slice();
 
-    for (var i = copia.length - 1; i >= 0; i--){
+    for (var i = copia.length - 1; i >= 0; i--) {
         const todo = copia[i];
 
         const element = document.querySelector(`#todo-${todo.id}`);
-        if(element.querySelector(".checkbox").checked){
+        if (element.querySelector(".checkbox").checked) {
             document.querySelector(`#todo-${todo.id}`).setAttribute("borrar", "true");
-            
+
             main.classList.add('vanish');
-            
+
             todosTotals.splice(todosTotals.indexOf(todo), 1);
-                       
+
         }
     }
-    
+
     localStorage.setItem("todos", JSON.stringify(todosTotals));
-    
-    setTimeout(function(){
+
+    setTimeout(function() {
         carregarTodos();
         calcularDuties();
-    }, 500)
-    
+    }, 500);
+
     checkedAll = true;
-    
+
 });
 
 
-document.querySelector("#tickButton").addEventListener("click", async event => {//no em toqueu que funciono sense saber com ;-;
+document.querySelector("#tickButton").addEventListener("click", async event => { //no em toqueu que funciono sense saber com ;-;
     var todos;
-    if(todosVisibles == null){
+    if (todosVisibles == null) {
         todos = await getTodos();
 
-    }else{
+    } else {
         todos = todosVisibles.slice();
     }
 
-    for(var i = todos.length -1; i >= 0; i--){
+    for (var i = todos.length - 1; i >= 0; i--) {
         var todo = todos[i];
         const element = document.querySelector(`#todo-${todo.id}`);
-        if(element.querySelector(".checkbox").checked){
-            if(element.querySelector(".taskRectangle").getAttribute("completed") == "false"){
+        if (element.querySelector(".checkbox").checked) {
+            if (element.querySelector(".taskRectangle").getAttribute("completed") == "false") {
                 todo.completed = true;
-            }else{
+            } else {
                 todo.completed = false;
             }
         }
@@ -161,35 +161,35 @@ document.addEventListener("DOMContentLoaded", async event => {
 
 });
 
-window.addEventListener("resize", async event =>{
+window.addEventListener("resize", async event => {
     await carregarTodos();
 });
 
-async function getTodos(){
+async function getTodos() {
     const raw = localStorage.getItem("todos");
-    if(raw == null){
+    if (raw == null) {
         return [];
     }
     return await JSON.parse(raw);
-    
+
 }
 
-async function calcularDuties(){
+async function calcularDuties() {
     var duties;
-    if(localStorage.todos != null){
-    duties = JSON.parse(localStorage.todos).length;
-    var dutiesHTML;
-    dutiesHTML = document.querySelector(".duties");
-    dutiesHTML.innerHTML = `<p class="duties">${duties} duties</p>`;
+    if (localStorage.todos != null) {
+        duties = JSON.parse(localStorage.todos).length;
+        var dutiesHTML;
+        dutiesHTML = document.querySelector(".duties");
+        dutiesHTML.innerHTML = `<p class="duties">${duties} duties</p>`;
     }
 }
 
-async function calcularUrgents(){
+async function calcularUrgents() {
     var tasks = await getTodos();
     var numberOfUrgents = 0;
     tasks.forEach(task => {
-        if(Date.now() - task.id  > 604800000 && task.completed == false){ //604800000 = one week
-            
+        if (Date.now() - task.id > 604800000 && task.completed == false) { //604800000 = one week
+
 
             const urgentText = document.querySelector(`#todo-${task.id} .urgentState`);
             urgentText.innerHTML = `<p>Urgent!</p>`;
@@ -198,7 +198,7 @@ async function calcularUrgents(){
     });
 
     const urgentDuty = document.querySelector(".urgents");
-    urgentDuty.innerHTML = `<p class="urgents">${numberOfUrgents} urgent</p>`
+    urgentDuty.innerHTML = `<p class="urgents">${numberOfUrgents} urgent</p>`;
     numberOfUrgents = 0;
 }
 
@@ -213,7 +213,7 @@ document.querySelector("#today").addEventListener("click", event => {
     carregarTodos();
 });
 
-document.querySelector("#allDuties").addEventListener("click", event =>{
+document.querySelector("#allDuties").addEventListener("click", event => {
     allDuties = true;
 
     const text = document.querySelector("#allDuties");
@@ -224,37 +224,37 @@ document.querySelector("#allDuties").addEventListener("click", event =>{
     carregarTodos();
 });
 
-function ordenarPerToday(todos){
+function ordenarPerToday(todos) {
 
     var today = new Date(Date.now());
     today = today.getFullYear() + "-" + parseInt(1 + today.getMonth()) + "-" + today.getDate();
 
     var copia = todos.slice();
 
-    copia.forEach(todo =>{
-        if(todo.deadline.localeCompare(today) != 0){
+    copia.forEach(todo => {
+        if (todo.deadline.localeCompare(today) != 0) {
             todos.splice(todos.indexOf(todo), 1);
         }
-    })
+    });
 }
 
-function ordenarPerData(todos){
+function ordenarPerData(todos) {
     todos.sort(
-        function (a, b) {
-            if(b.completed == true && a.completed == false){
+        function(a, b) {
+            if (b.completed == true && a.completed == false) {
                 return -1;
-            }else if(b.completed == false && a.completed == true){
+            } else if (b.completed == false && a.completed == true) {
                 return 1;
-            }else{
-                return b.id - a.id;//canviar ID per DATE (i potser traduir la date a timestamp/epoch si fa falta) si s'ha dordenar diferent
+            } else {
+                return b.id - a.id; //canviar ID per DATE (i potser traduir la date a timestamp/epoch si fa falta) si s'ha dordenar diferent
             }
         }
     );
     //localStorage.setItem("todos", JSON.stringify(todos)); //deixar comentat sempre i quan no falli res d'ordres
 }
 
-function filterFunction(){  //Function inspired by W3S. Credit to its authors.
-    var input, filter, ul, li, a, i, txtValue, b, txtValue2;
+function filterFunction() { //Function inspired by W3S. Credit to its authors.
+    var input, filter, ul, li, a, i, txtValue, txtValue2;
     input = document.getElementById("searchBx");
     filter = input.value.toUpperCase();
     ul = document.getElementById("tasklst");
@@ -270,24 +270,24 @@ function filterFunction(){  //Function inspired by W3S. Credit to its authors.
 
         //obtenir category
 
-        if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) {  //yes
+        if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) { //yes
             li[i].style.display = "";
-            
-        } else {    //nope
+
+        } else { //nope
             li[i].style.display = "none";
         }
     }
 }
 
 
-function editFunction(todoID){
-    localStorage.setItem("edit", todoID)
+function editFunction(todoID) {
+    localStorage.setItem("edit", todoID);
 
     window.location.href = "./form.html";
 
 }
 
-async function carregarTodos(){
+async function carregarTodos() {
 
     document.querySelector(".tasklist").innerHTML = "";
     const llista = document.querySelector(".tasklist");
@@ -296,29 +296,37 @@ async function carregarTodos(){
     var todos = await getTodos();
     todosTotals = todos.slice();
 
-    if(allDuties == true){
+    if (allDuties == true) {
         ordenarPerData(todos);
-    }else{
+    } else {
         ordenarPerData(todos);
         ordenarPerToday(todos);
     }
 
-    todosVisibles = todos.slice();  //copia els visibles
+    todosVisibles = todos.slice(); //copia els visibles
 
     await todos.forEach(todo => {
         //correcció width
-        var size = Math.floor(document.querySelector("body").clientWidth*0.05 - 35);
-        if(todo.descripcio.length > size){
-             todo.descripcio = todo.descripcio.slice(0,size) + "...";
+        var size = Math.floor(document.querySelector("body").clientWidth * 0.05 - 35);
+        if (todo.descripcio.length > size) {
+            todo.descripcio = todo.descripcio.slice(0, size) + "...";
         }
 
-        var size2 = Math.floor(document.querySelector("body").clientWidth*0.015);
-        if(todo.titol.length > size2){
-            todo.titol = todo.titol.slice(0,size2) + "...";
+        var size2 = Math.floor(document.querySelector("body").clientWidth * 0.015);
+        if (todo.titol.length > size2) {
+            todo.titol = todo.titol.slice(0, size2) + "...";
         }
 
         //creació tasks
-        const { id, titol, descripcio, deadline, categoria, imatge, completed } = todo;
+        const {
+            id,
+            titol,
+            descripcio,
+            deadline,
+            categoria,
+            imatge,
+            completed
+        } = todo;
 
         const nouElement = `<div class="task" id="todo-${id}" borrar="false">
         <div class="taskSquare" completed="${completed}">
@@ -360,6 +368,6 @@ async function carregarTodos(){
         llista.innerHTML += nouElement;
     });
     afegirCheckbox();
-    calcularUrgents()
+    calcularUrgents();
     filterFunction();
 }
