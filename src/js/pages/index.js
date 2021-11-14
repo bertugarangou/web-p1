@@ -31,9 +31,31 @@ document.querySelector('.select-wrapper').addEventListener('click', function() {
 
                 console.log();
 
-                this.closest('.select').querySelector('.select__trigger svg').innerHTML = `width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><rect class = "rectSVG" width="19" height="19" rx="5" fill="${option.querySelector(".rectSVG").getAttribute("fill")}"/>`;
+                this.closest('.select').querySelector('.select__trigger svg').innerHTML = `width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><rect class = "rectSVG" width="19" height="19" rx="5" fill="${option.querySelector(".rectSVG").getAttribute("fill")}" id="colorChosen"/>`;
             }
         });
+    }
+});
+
+
+document.querySelector(".square2").addEventListener("click", event=>{
+    var input = document.getElementById("catBox");
+    input = input.value;
+    if(input != ""){
+        const cat = {
+            color: document.getElementById("colorChosen").getAttribute("fill"),
+            name: input
+        };
+        //afegir localstorage
+        const raw = localStorage.getItem("categories");
+        if (raw == null) {
+            localStorage.setItem("categories", JSON.stringify([cat]));
+        } else {
+            const cats = JSON.parse(raw);
+            cats.push(cat);
+            localStorage.setItem("categories", JSON.stringify(cats));
+        }
+        carregarCategories();
     }
 });
 
@@ -137,7 +159,6 @@ document.querySelector("#tickButton").addEventListener("click", async event => {
     localStorage.setItem("todos", JSON.stringify(todosTotals));
     await carregarTodos();
     checkedAll = true;
-    //filterFunction();
 });
 
 document.querySelector(".add-task-button").addEventListener("click", event => {
@@ -158,6 +179,7 @@ document.addEventListener("DOMContentLoaded", async event => {
     await carregarTodos();
     await calcularDuties();
     await calcularUrgents();
+    await carregarCategories();
 
 });
 
@@ -171,7 +193,13 @@ async function getTodos() {
         return [];
     }
     return await JSON.parse(raw);
-
+}
+async function getCategories() {
+    const raw = localStorage.getItem("categories");
+    if (raw == null) {
+        return [];
+    }
+    return await JSON.parse(raw);
 }
 
 async function calcularDuties() {
@@ -253,28 +281,28 @@ function ordenarPerData(todos) {
     //localStorage.setItem("todos", JSON.stringify(todos)); //deixar comentat sempre i quan no falli res d'ordres
 }
 
-function filterFunction() { //Function inspired by W3S. Credit to its authors.
-    var input, filter, ul, li, a, i, txtValue, txtValue2;
+function filterFunction() {
+    var input, filter, pack, items, a, i, txtValue, txtValue2, b;
     input = document.getElementById("searchBx");
     filter = input.value.toUpperCase();
-    ul = document.getElementById("tasklst");
-    li = ul.getElementsByClassName("task");
+    pack = document.getElementById("tasklst");
+    items = pack.getElementsByClassName("task");
 
-    for (i = 0; i < li.length; i++) {
+    for (i = 0; i < items.length; i++) {
         //obtenir titol
-        a = li[i].getElementsByClassName("taskTitle")[0];
+        a = items[i].getElementsByClassName("taskTitle")[0];
         txtValue = a.textContent || a.innerText;
         //obtenir descr
-        a = li[i].getElementsByClassName("taskDescription")[0];
-        txtValue2 = a.textContent || a.innerText;
+        b = items[i].getElementsByClassName("taskDescription")[0];
+        txtValue2 = b.textContent || b.innerText;
 
         //obtenir category
 
         if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) { //yes
-            li[i].style.display = "";
+            items[i].style.display = "";
 
         } else { //nope
-            li[i].style.display = "none";
+            items[i].style.display = "none";
         }
     }
 }
@@ -285,6 +313,46 @@ function editFunction(todoID) {
 
     window.location.href = "./form.html";
 
+}
+function ordenarCats(cats){
+    cats.sort(
+        function(a,b){
+            if(a.name < b.name) { return -1; }
+            if(a.name > b.name) { return 1; }
+            return 0;
+        }
+    )
+}
+
+async function carregarCategories(){
+    document.querySelector(".categoryZone").innerHTML = "";
+    const llista = document.querySelector(".categoryZone");
+    var cats = await getCategories();
+
+    ordenarCats(cats);
+
+    await cats.forEach(cat =>{
+        const {
+            color,
+            name
+        } = cat;
+    
+        const nouElement =`
+        <div class="categoryList">
+            <button class="cross">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="black" fill-opacity="0.25" />
+                </svg>
+            </button>
+            <div>
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <rect width="19" height="19" rx="5" fill="${color}" />
+                </svg>
+            </div>
+            <p>${name}</p>
+        </div>`;
+        llista.innerHTML += nouElement;
+    });
 }
 
 async function carregarTodos() {
@@ -363,7 +431,7 @@ async function carregarTodos() {
                 </div>
             </div>
         </div>
-    </div>`;
+        </div>`;
 
         llista.innerHTML += nouElement;
     });
