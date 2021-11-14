@@ -313,7 +313,6 @@ async function filterFunction() {
 
         }else{
             txtValue3 = String(c.textContent || c.innerText);
-            console.log(txtValue3)
             if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 || txtValue3.toUpperCase().indexOf(filter) > -1) {
                 items[i].style.display = "";
 
