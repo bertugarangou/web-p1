@@ -14,7 +14,7 @@ async function getTodos(){
 document.querySelector("#cancelBtn").addEventListener("click", event => {
     window.location.href = "./index.html";
     edit = false;
-    localStorage.removeItem("edit")
+    localStorage.removeItem("edit");
     event.preventDefault();
 });
 
@@ -33,9 +33,9 @@ document.addEventListener("DOMContentLoaded", async event => {
     if(id != null){
         edit = true;
 
-        id = id.split("-")
-        id = id[1]
-        data = await getTodos();
+        id = id.split("-");
+        id = id[1];
+        var data = await getTodos();
         
         data.forEach(todo =>{
             if(id.localeCompare(todo.id) == 0){//si ha trobat la tasca
@@ -51,6 +51,10 @@ document.addEventListener("DOMContentLoaded", async event => {
 
         document.getElementById('date').value = editing.deadline; 
         document.getElementById('description').value = editing.descripcio;
+
+        const imatge = document.getElementById("imageCoverID");
+        imatge.setAttribute("src", editing.imatge);
+
     }else{
          edit = false;
     }
@@ -77,15 +81,15 @@ document.querySelector("#acceptBtn").addEventListener("click", async event => {
     const errorZone = document.querySelector(".error-zone");
     errorZone.innerHTML = ``;
     if(todo.titol.length == 0 || todo.titol.length > 100){
-        var errorFlag = 1;
+        errorFlag = 1;
         errorZone.innerHTML += `<span id="errorTitle">Title required. Maximum 100 characters length.ㅤ</span>`;
     }
     if(todo.descripcio.length == 0 || todo.descripcio.length > 1000){
-        var errorFlag = 1;
+        errorFlag = 1;
         errorZone.innerHTML += `<span id="erorrDescription"> Description required. Maximum 1000 characters length.ㅤ</span>`;
     }
     if(todo.deadline.length == 0){
-        var errorFlag = 1;
+        errorFlag = 1;
         errorZone.innerHTML += `<span id="errorDeadline"> Deadline required.ㅤ</span>`;
     }
     if(errorFlag != 1){
@@ -102,8 +106,8 @@ document.querySelector("#acceptBtn").addEventListener("click", async event => {
             }else{
                 var newTodos = await getTodos();
 
-                newTodos.splice(newTodos.indexOf(editing),1)
-                newTodos.push(todo)
+                newTodos.splice(newTodos.indexOf(editing),1);
+                newTodos.push(todo);
                 editing = null;
                 localStorage.setItem("todos", JSON.stringify(newTodos));
             }
