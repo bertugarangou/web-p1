@@ -29,7 +29,6 @@ document.querySelector('.select-wrapper').addEventListener('click', function() {
 
                 this.classList.add('selected');
 
-                console.log();
 
                 this.closest('.select').querySelector('.select__trigger svg').innerHTML = `width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><rect class = "rectSVG" width="19" height="19" rx="5" fill="${option.querySelector(".rectSVG").getAttribute("fill")}" id="colorChosen"/>`;
             }
@@ -445,12 +444,39 @@ async function carregarTodos() {
 
         llista.innerHTML += nouElement;
     });
-
-    afegirCategories()
+    
+    await afegirCategories()
     afegirCheckbox();
-    calcularUrgents();
+    await calcularUrgents();
     filterFunction();
+
+    const cats = await getCategories();
+    todosVisibles.forEach(un =>{
+        if(un.categoria != null){
+            var index = 0;
+            for(var i = 0; i < cats.length; i++){
+                var cat = cats[i];
+                if(String(cat.id).localeCompare(String(un.categoria)) == 0){
+                    index = i;
+                }
+            }
+
+            const catHTML = document.querySelector("#todo-"+ un.id + " .container5");
+            catHTML.innerHTML = `<div class="cosa">
+            <p class="taskCategory1">${cats[index].name}</p>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <rect width="14" height="14" rx="5" fill="${cats[index].color}"/>
+            </svg> 
+        </div>`;
+
+
+
+
+        }
+    })
+    
 }
+
 
 async function afegirCategories(){
     const nouElement = `

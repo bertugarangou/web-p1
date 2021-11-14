@@ -321,3 +321,97 @@ button.sendBtn {
     background-color: #8B74D8;
     color: black;
 }
+
+.select-wrapper {
+    position: relative;
+    user-select: none;
+    width: 100%;
+
+}
+
+.squareArrow {
+    width: 34px;
+    height: 34px;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.squareArrow:hover {
+    background: rgba(170, 161, 200, 0.50);
+}
+
+.select__trigger {
+
+    width: 200px;
+    height: 34px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    background: rgba(170, 161, 200, 0.25);
+}
+
+.custom-options {
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-top: 0;
+    opacity: 25%;
+    transition: all .5s;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.custom-options {
+    background: #eae7f1
+}
+
+.custom-options:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+
+}
+
+
+
+.select.open .custom-options {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.custom-options {
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-top: 0;
+    opacity: 25%;
+    transition: all .5s;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 2;
+    width: 210px;
+    background: #eae7f1
+}
+
+
+.arrow {
+    position: relative;
+    height: 15px;
+    width: 15px;
+}
+
+.categoria-llistada{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

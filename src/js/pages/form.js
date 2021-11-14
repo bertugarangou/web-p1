@@ -2,6 +2,15 @@ const imatgeActual = document.querySelector(".coverImageSelected");
 var edit = false;
 var editing;
 
+var categoriaSelect = null;
+
+var categories;
+/*
+ * categories[i].name: "nom"
+ * categories[i].color: "#RRGGBB"
+ * categories[i].id = [double] 6278439423
+ */
+
 async function getTodos() {
     const raw = localStorage.getItem("todos");
     if (raw == null) {
@@ -28,7 +37,6 @@ document.querySelectorAll(".coverImage").forEach(element => {
 
 document.addEventListener("DOMContentLoaded", async event => {
     var id = localStorage.getItem("edit");
-
 
     if (id != null) {
         edit = true;
@@ -60,9 +68,22 @@ document.addEventListener("DOMContentLoaded", async event => {
     }
     localStorage.removeItem("edit");
 
+
+    carregarCategories();
 });
 
+async function carregarCategories(){
+    categories = await getCategories();
+    console.log(categories);
+}
 
+async function getCategories() {
+    const raw = localStorage.getItem("categories");
+    if (raw == null) {
+        return [];
+    }
+    return await JSON.parse(raw);
+}
 
 document.querySelector("#acceptBtn").addEventListener("click", async event => {
     event.preventDefault();
@@ -72,7 +93,7 @@ document.querySelector("#acceptBtn").addEventListener("click", async event => {
         titol: document.querySelector("#title").value,
         descripcio: document.querySelector("#description").value,
         deadline: document.querySelector("#date").value,
-        categoria: [],
+        categoria: categoriaSelect,//en el futur se'n podran configurar varies, ja que no veiem la manera de seleccionar mes d'una
         imatge: document.querySelector(".coverImageSelected").getAttribute("src"),
         completed: document.querySelector("#completedCheck").checked
     };
@@ -127,24 +148,48 @@ document.querySelector("#acceptBtn").addEventListener("click", async event => {
     event.preventDefault();
 });
 
-/*
-document.querySelector('.select-wrapper').addEventListener('click', function() {
-    
-    this.querySelector('.select').classList.toggle('open');
+/*Desplegable de categorias*/
 
+document.querySelector('.select-wrapper').addEventListener('click', function() {
+
+    this.querySelector('.select').classList.toggle('open');
+    /* Carregar categories */
+    document.querySelector('.select-wrapper').querySelector(".custom-options").innerHTML = ``;
+    categories.forEach(element => {
+        document.querySelector('.select-wrapper').querySelector(".custom-options").innerHTML+= `
+        <div id = "${element.id}" class = "custom-option";>
+        <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
+        <rect class="rectSVG" width="19" height="19" rx="5" fill="${element.color}" />
+        </svg>
+        <span class ="nameCategory">${element.name}</span>
+        </div>`
+    });
+    /*Cambiar color por uno selecionado */
     for (const option of document.querySelectorAll(".custom-option")) {
         option.addEventListener('click', function() {
+            categoriaSelect = option.getAttribute("id");
+            console.log(categoriaSelect);
             if (!this.classList.contains('selected')) {
                 
-                this.parentNode.querySelector('.custom-option.selected').classList.remove('selected');
+                document.querySelector(".custom-option.selected").classList.remove('selected');
+                console.log(this.classList);
+                this.classList.add('selected');
                 
-                this.classList.add('selected');     
 
-                console.log();
-                
-                this.closest('.select').querySelector('.select__trigger svg').innerHTML = `width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><rect class = "rectSVG" width="19" height="19" rx="5" fill="${option.querySelector(".rectSVG").getAttribute("fill")}"/>`;
+                this.closest('.select').querySelector('.select__trigger').innerHTML = `
+                <div class="custom-option selected" >
+                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <rect class="rectSVG" width="19" height="19" rx="5" fill="${option.querySelector(".rectSVG").getAttribute("fill")}" />
+                    </svg>
+                    <span>${option.querySelector(".nameCategory").textContent}</span>
+                </div>
+                 </svg>
+                    <div class="squareArrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M7.41 8.58L12 13.17L16.59 8.58L18 10L12 16L6 10L7.41 8.58Z" fill="black" />
+                    </svg>
+                    </div> `;
             }
-        })
+        });
     }
 });
-*/

@@ -1,117 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="authors" content="Álvaro MartínezAlbert Garangou & Pau Hinojosa">
-    <title>TODO++</title>
-    <link rel="stylesheet" href="./css/normalize.css">
-    <link rel="stylesheet" href="./css/pages/forms.css">
-    <META NAME="robots" CONTENT="nofollow">
-    <META name="description" content="TODO++, tasker website. Page used for adding and creating new tasks.">
-    <META name="keywords" content="TODO, task, tasker, deadlines, university, programming, html, css, js, npm">
-    <script defer src="./js/pages/form.js"></script>
-    <link rel="icon" href="./media/img/favicon.ico">
-
-</head>
-
-<body>
-    <main>
-
-        <form class="container">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <meta name="authors" content="Álvaro MartínezAlbert Garangou & Pau Hinojosa">
+      <title>TODO++</title>
+      <link rel="stylesheet" href="./css/normalize.css">
+      <link rel="stylesheet" href="./css/pages/forms.css">
+      <META NAME="robots" CONTENT="nofollow">
+      <META name="description" content="TODO++, tasker website. Page used for adding and creating new tasks.">
+      <META name="keywords" content="TODO, task, tasker, deadlines, university, programming, html, css, js, npm">
+      <script defer src="./js/pages/form.js"></script>
+      <link rel="icon" href="./media/img/favicon.ico">
+   </head>
+   <body>
+      <main>
+         <form class="container">
             <div class="side-space">
-                <!--EMPTY-->
+               <!--EMPTY-->
             </div>
             <div class="contingut">
-                <div class="images">
-                    <!--IMAGE SELECTOR-->
-
-                    <img src="media/img/task_image1.png" alt="Selected cover image for the task" class="coverImageSelected" id="imageCoverID">
-
-                    <div class="coverImagesBox">
-
-
-                        <img src="media/img/task_image1.png" alt="Cover image default style 1" class="coverImage">
-                        <img src="media/img/task_image2.png" alt="Cover image default style 2" class="coverImage">
-                        <img src="media/img/task_image3.png" alt="Cover image default style 3" class="coverImage">
-                        <img src="media/img/task_image4.png" alt="Cover image default style 4" class="coverImage">
-                        <img src="media/img/task_image5.png" alt="Cover image default style 5" class="coverImage">
-                        <img src="media/img/task_image6.png" alt="Cover image defualt style 6" class="coverImage">
-                    </div>
-
-
-                </div>
-                <div class="data-input-1">
-                    <!--TITLE & DEADLINE-->
-
-                    <div class="title-box">
-                        <label for="title" class="title"><strong>Title</strong></label>
-                        <input type="text" class="inputCustom" name="title" id="title">
-                    </div>
-                    <div class="deadline-box">
-                        <label for="date" class="deadlineClass"><strong>Deadline</strong></label>
-                        <input type="text" class="inputCustom" id="date" name="date" placeholder="" onfocus="(this.type='date')" onblur="(this.type='text')">
-                    </div>
-
-                </div>
-                <div class="data-input-2">
-                    <!--Lista desplegable categorias-->
-
-
-                    <!--CATEGORY
-                    <label for="categories" class="categoryLabel"><strong>Category</strong></label>
+               <div class="images">
+                  <!--IMAGE SELECTOR-->
+                  <img src="media/img/task_image1.png" alt="Selected cover image for the task" class="coverImageSelected" id="imageCoverID">
+                  <div class="coverImagesBox">
+                     <img src="media/img/task_image1.png" alt="Cover image default style 1" class="coverImage">
+                     <img src="media/img/task_image2.png" alt="Cover image default style 2" class="coverImage">
+                     <img src="media/img/task_image3.png" alt="Cover image default style 3" class="coverImage">
+                     <img src="media/img/task_image4.png" alt="Cover image default style 4" class="coverImage">
+                     <img src="media/img/task_image5.png" alt="Cover image default style 5" class="coverImage">
+                     <img src="media/img/task_image6.png" alt="Cover image defualt style 6" class="coverImage">
+                  </div>
+               </div>
+               <div class="data-input-1">
+                  <!--TITLE & DEADLINE-->
+                  <div class="title-box">
+                     <label for="title" class="title"><strong>Title</strong></label>
+                     <input type="text" class="inputCustom" name="title" id="title">
+                  </div>
+                  <div class="deadline-box">
+                     <label for="date" class="deadlineClass"><strong>Deadline</strong></label>
+                     <input type="text" class="inputCustom" id="date" name="date" placeholder="" onfocus="(this.type='date')" onblur="(this.type='text')">
+                  </div>
+               </div>
+               <div class="data-input-2">
+                    <h2 class="categoryLabel"><strong>Category</strong></H2>
                     
-                    <rect class="rectCategories">
-                        <p>Select category</p>
-                        <svg class="flechita" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.41 8.58L12 13.17L16.59 8.58L18 10L12 16L6 10L7.41 8.58Z" fill="black"/>
-                        </svg>
-                    </rect>
-                    <rect class="categoryRect">
-                        <svg class="custom-option selected" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect class = "rectSVG" width="19" height="19" rx="5" fill="#F94144"/>
-                        </svg>
-                        <p class="categoryName">Uni projects</p>
-                    </rect>
-                    -->
+                  <!--Lista desplegable categorias
+
+                     <rect class="rectCategories">
+                         <span>Select category</span>
+                         <svg class="flechita" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <path d="M7.41 8.58L12 13.17L16.59 8.58L18 10L12 16L6 10L7.41 8.58Z" fill="black"/>
+                         </svg>
+                     </rect>
+                     -->
+                  <!--Lista desplegable categorias-->
+                  <div class="select-wrapper">
+                    <div class="select">
+                        <div class="select__trigger">
+                            <div class="custom-option selected">
+
+                               
+                                <span>Select category</span> 
+                                
+                            </div>
+                            </svg>
+                            <div class="squareArrow">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M7.41 8.58L12 13.17L16.59 8.58L18 10L12 16L6 10L7.41 8.58Z" fill="black" />
+                                    </svg>
+                            </div>
+                        </div>
 
 
+                        <div class="custom-options">
 
-                </div>
-                <div class="data-input-3">
-                    <!--DESCRIPTION-->
-                    <label for="description" class="descriptionLabel"><strong>Description</strong></label>
-
-                    <textarea name="description" id="description" cols="50" rows="10"></textarea>
-
-                </div>
-                <div class="bottom-data-input">
-                    <div class="error-zone">
-                        <!--ERROR MESSAGES-->
-                    </div>
-                    <div class="buttons-bottom-zone">
-                        <!--BUTTONS CHECK/CANCEL/ACCEPT-->
-                        <div class="buttonCheckbox">
-                            <input type="checkbox" value="completed" id="completedCheck"> <label for="completedCheck"><strong>Completed</strong></label>
+                            
 
                         </div>
-                        <button class="sendBtn" id="cancelBtn"><strong>Cancel</strong></button>
-                        <button class="sendBtn" id="acceptBtn"><strong>Accept</strong></button>
-
                     </div>
                 </div>
-            </div>
 
+               </div>
+               <div class="data-input-3">
+                  <!--DESCRIPTION-->
+                  <label for="description" class="descriptionLabel"><strong>Description</strong></label>
+                  <textarea name="description" id="description" cols="50" rows="10"></textarea>
+               </div>
+               <div class="bottom-data-input">
+                  <div class="error-zone">
+                     <!--ERROR MESSAGES-->
+                  </div>
+                  <div class="buttons-bottom-zone">
+                     <!--BUTTONS CHECK/CANCEL/ACCEPT-->
+                     <div class="buttonCheckbox">
+                        <input type="checkbox" value="completed" id="completedCheck"> <label for="completedCheck"><strong>Completed</strong></label>
+                     </div>
+                     <button class="sendBtn" id="cancelBtn"><strong>Cancel</strong></button>
+                     <button class="sendBtn" id="acceptBtn"><strong>Accept</strong></button>
+                  </div>
+               </div>
+            </div>
             <div class="side-space-2">
-                <!--EMPTY-->
+               <!--EMPTY-->
             </div>
-        </form>
-
-
-
-
-    </main>
-</body>
-
+         </form>
+      </main>
+   </body>
 </html>
